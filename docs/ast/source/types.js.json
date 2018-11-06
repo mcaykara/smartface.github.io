@@ -1,0 +1,1026 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 3815,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 135,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 3815,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 135,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [],
+    "directives": [],
+    "leadingComments": null,
+    "innerComments": [
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @external {Page} http://docs.smartface.io/#!/api/UI.Page\n ",
+        "start": 0,
+        "end": 67,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 3,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @external {NavigationController} http://docs.smartface.io/#!/api/UI.NavigationController\n ",
+        "start": 69,
+        "end": 168,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "line": 7,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @external {BottomTabbarController} http://docs.smartface.io/#!/api/UI.BottomTabBarController\n ",
+        "start": 170,
+        "end": 273,
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 0
+          },
+          "end": {
+            "line": 11,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @external {TabBarItem} http://docs.smartface.io/#!/api/UI.TabBarItem\n ",
+        "start": 275,
+        "end": 354,
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 0
+          },
+          "end": {
+            "line": 15,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @external {Image} http://docs.smartface.io/#!/api/UI.Image\n ",
+        "start": 356,
+        "end": 425,
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 0
+          },
+          "end": {
+            "line": 19,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @external {Color} http://docs.smartface.io/#!/api/UI.Color\n ",
+        "start": 427,
+        "end": 496,
+        "loc": {
+          "start": {
+            "line": 21,
+            "column": 0
+          },
+          "end": {
+            "line": 23,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {object<string,string|object>} BottomTabBarItem Represent {@link TabBarItem} params\n * @property {Image} icon\n * @property {string} title\n ",
+        "start": 498,
+        "end": 655,
+        "loc": {
+          "start": {
+            "line": 25,
+            "column": 0
+          },
+          "end": {
+            "line": 29,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {RouterParams} BottomTabBarRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {object} tabbarParams See {@link BottomTabbarController}\n ",
+        "start": 657,
+        "end": 859,
+        "loc": {
+          "start": {
+            "line": 31,
+            "column": 0
+          },
+          "end": {
+            "line": 35,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {RouterParams} NativeStackRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {function():HeaderBarParams} headerBarParams See {@link NavigationController}\n ",
+        "start": 861,
+        "end": 1083,
+        "loc": {
+          "start": {
+            "line": 37,
+            "column": 0
+          },
+          "end": {
+            "line": 41,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {object} HeaderBarParams\n * @property {{transulent: boolean, alpha: number, backIndicatorImage: Image, backIndicatorTransitionMaskImage: Image, prefersLargeTitles: boolean}} ios\n * @property {boolean} borderVisibility\n * @property {Color} titleColor\n * @property {boolean} transparent\n * @property {boolean} visible\n * @property {Color} backgroundColor\n ",
+        "start": 1085,
+        "end": 1457,
+        "loc": {
+          "start": {
+            "line": 43,
+            "column": 0
+          },
+          "end": {
+            "line": 51,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef NavigationControllerTransformEvent\n * @property {Page} frompage\n * @property {Page} topage\n * @property {{operation: number}} operation\n ",
+        "start": 1459,
+        "end": 1614,
+        "loc": {
+          "start": {
+            "line": 53,
+            "column": 0
+          },
+          "end": {
+            "line": 58,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {object} RouteMatch\n * @property {boolean} isExact if Requested path is an exact match or not.\n * @property {Object} params\n * @property {string} path\n * @property {string} url\n ",
+        "start": 1616,
+        "end": 1812,
+        "loc": {
+          "start": {
+            "line": 60,
+            "column": 0
+          },
+          "end": {
+            "line": 66,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {object} RouteLocation\n * @property {string} pathname\n * @property {string} search\n * @property {string} hash\n * @property {RouteState} state\n * @property {string} key\n ",
+        "start": 1814,
+        "end": 2001,
+        "loc": {
+          "start": {
+            "line": 68,
+            "column": 0
+          },
+          "end": {
+            "line": 75,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {object} RouteParams\n * @property {string} path\n * @property {Array<Route>} routes\n * @property {boolean} exact\n * @property {function(route: Route, nextState: RouteState)} routeShouldMatch Handles if route is mathed as request url\n * @property {function(Router: Router, route: Route)} routeDidEnter Handles if route is displayed\n * @property {function(Router: Router, route: Route)} routeDidExit Handles if route is removed\n ",
+        "start": 2003,
+        "end": 2447,
+        "loc": {
+          "start": {
+            "line": 77,
+            "column": 0
+          },
+          "end": {
+            "line": 85,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {object} RouteState\n * @property {object} routeData\n * @property {string} action\n * @property {RouteMatch} match\n * @property {object} view\n * @property {object} routingState Keeps user data when route runs\n ",
+        "start": 2449,
+        "end": 2675,
+        "loc": {
+          "start": {
+            "line": 87,
+            "column": 0
+          },
+          "end": {
+            "line": 94,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteShouldMatchHandler\n ",
+        "start": 2677,
+        "end": 2768,
+        "loc": {
+          "start": {
+            "line": 96,
+            "column": 0
+          },
+          "end": {
+            "line": 98,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteBuildHandler\n ",
+        "start": 2770,
+        "end": 2855,
+        "loc": {
+          "start": {
+            "line": 100,
+            "column": 0
+          },
+          "end": {
+            "line": 102,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {function(path: string, routeData: object, action: string, okFn: function)} RouterBlockHandler\n *\n ",
+        "start": 2857,
+        "end": 2974,
+        "loc": {
+          "start": {
+            "line": 104,
+            "column": 0
+          },
+          "end": {
+            "line": 107,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * @typedef {function(location: RouteLocation, action: string)} HistoryListener\n ",
+        "start": 2976,
+        "end": 3063,
+        "loc": {
+          "start": {
+            "line": 109,
+            "column": 0
+          },
+          "end": {
+            "line": 111,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * History implementation\n *\n * @typedef {object} History\n *\n * @property {number} length\n * @property {string} action\n * @property {number} index\n * @property {Array<RouteLocation>} entries\n * @property {function} createHref\n * @property {function(path: string, data: object)} push\n * @property {function(path: string)} silencePush\n * @property {function(path: string, data: object)} replace\n * @property {function} rollback\n * @property {function(index: number)} go\n * @property {function} clear\n * @property {function} goBack\n * @property {function} goForward\n * @property {function(index: number):boolean} canGo\n * @property {function(fn: RouterBlockHandler):function} block\n * @property {function(fn: HistoryListener):function} listen\n *\n ",
+        "start": 3064,
+        "end": 3814,
+        "loc": {
+          "start": {
+            "line": 112,
+            "column": 0
+          },
+          "end": {
+            "line": 134,
+            "column": 3
+          }
+        }
+      }
+    ]
+  },
+  "comments": [
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {Page} http://docs.smartface.io/#!/api/UI.Page\n ",
+      "start": 0,
+      "end": 67,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {NavigationController} http://docs.smartface.io/#!/api/UI.NavigationController\n ",
+      "start": 69,
+      "end": 168,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {BottomTabbarController} http://docs.smartface.io/#!/api/UI.BottomTabBarController\n ",
+      "start": 170,
+      "end": 273,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {TabBarItem} http://docs.smartface.io/#!/api/UI.TabBarItem\n ",
+      "start": 275,
+      "end": 354,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {Image} http://docs.smartface.io/#!/api/UI.Image\n ",
+      "start": 356,
+      "end": 425,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {Color} http://docs.smartface.io/#!/api/UI.Color\n ",
+      "start": 427,
+      "end": 496,
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 0
+        },
+        "end": {
+          "line": 23,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object<string,string|object>} BottomTabBarItem Represent {@link TabBarItem} params\n * @property {Image} icon\n * @property {string} title\n ",
+      "start": 498,
+      "end": 655,
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 0
+        },
+        "end": {
+          "line": 29,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {RouterParams} BottomTabBarRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {object} tabbarParams See {@link BottomTabbarController}\n ",
+      "start": 657,
+      "end": 859,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 0
+        },
+        "end": {
+          "line": 35,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {RouterParams} NativeStackRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {function():HeaderBarParams} headerBarParams See {@link NavigationController}\n ",
+      "start": 861,
+      "end": 1083,
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 0
+        },
+        "end": {
+          "line": 41,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object} HeaderBarParams\n * @property {{transulent: boolean, alpha: number, backIndicatorImage: Image, backIndicatorTransitionMaskImage: Image, prefersLargeTitles: boolean}} ios\n * @property {boolean} borderVisibility\n * @property {Color} titleColor\n * @property {boolean} transparent\n * @property {boolean} visible\n * @property {Color} backgroundColor\n ",
+      "start": 1085,
+      "end": 1457,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 0
+        },
+        "end": {
+          "line": 51,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef NavigationControllerTransformEvent\n * @property {Page} frompage\n * @property {Page} topage\n * @property {{operation: number}} operation\n ",
+      "start": 1459,
+      "end": 1614,
+      "loc": {
+        "start": {
+          "line": 53,
+          "column": 0
+        },
+        "end": {
+          "line": 58,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object} RouteMatch\n * @property {boolean} isExact if Requested path is an exact match or not.\n * @property {Object} params\n * @property {string} path\n * @property {string} url\n ",
+      "start": 1616,
+      "end": 1812,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 0
+        },
+        "end": {
+          "line": 66,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object} RouteLocation\n * @property {string} pathname\n * @property {string} search\n * @property {string} hash\n * @property {RouteState} state\n * @property {string} key\n ",
+      "start": 1814,
+      "end": 2001,
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 0
+        },
+        "end": {
+          "line": 75,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object} RouteParams\n * @property {string} path\n * @property {Array<Route>} routes\n * @property {boolean} exact\n * @property {function(route: Route, nextState: RouteState)} routeShouldMatch Handles if route is mathed as request url\n * @property {function(Router: Router, route: Route)} routeDidEnter Handles if route is displayed\n * @property {function(Router: Router, route: Route)} routeDidExit Handles if route is removed\n ",
+      "start": 2003,
+      "end": 2447,
+      "loc": {
+        "start": {
+          "line": 77,
+          "column": 0
+        },
+        "end": {
+          "line": 85,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object} RouteState\n * @property {object} routeData\n * @property {string} action\n * @property {RouteMatch} match\n * @property {object} view\n * @property {object} routingState Keeps user data when route runs\n ",
+      "start": 2449,
+      "end": 2675,
+      "loc": {
+        "start": {
+          "line": 87,
+          "column": 0
+        },
+        "end": {
+          "line": 94,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteShouldMatchHandler\n ",
+      "start": 2677,
+      "end": 2768,
+      "loc": {
+        "start": {
+          "line": 96,
+          "column": 0
+        },
+        "end": {
+          "line": 98,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteBuildHandler\n ",
+      "start": 2770,
+      "end": 2855,
+      "loc": {
+        "start": {
+          "line": 100,
+          "column": 0
+        },
+        "end": {
+          "line": 102,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {function(path: string, routeData: object, action: string, okFn: function)} RouterBlockHandler\n *\n ",
+      "start": 2857,
+      "end": 2974,
+      "loc": {
+        "start": {
+          "line": 104,
+          "column": 0
+        },
+        "end": {
+          "line": 107,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {function(location: RouteLocation, action: string)} HistoryListener\n ",
+      "start": 2976,
+      "end": 3063,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 0
+        },
+        "end": {
+          "line": 111,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * History implementation\n *\n * @typedef {object} History\n *\n * @property {number} length\n * @property {string} action\n * @property {number} index\n * @property {Array<RouteLocation>} entries\n * @property {function} createHref\n * @property {function(path: string, data: object)} push\n * @property {function(path: string)} silencePush\n * @property {function(path: string, data: object)} replace\n * @property {function} rollback\n * @property {function(index: number)} go\n * @property {function} clear\n * @property {function} goBack\n * @property {function} goForward\n * @property {function(index: number):boolean} canGo\n * @property {function(fn: RouterBlockHandler):function} block\n * @property {function(fn: HistoryListener):function} listen\n *\n ",
+      "start": 3064,
+      "end": 3814,
+      "loc": {
+        "start": {
+          "line": 112,
+          "column": 0
+        },
+        "end": {
+          "line": 134,
+          "column": 3
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {Page} http://docs.smartface.io/#!/api/UI.Page\n ",
+      "start": 0,
+      "end": 67,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {NavigationController} http://docs.smartface.io/#!/api/UI.NavigationController\n ",
+      "start": 69,
+      "end": 168,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {BottomTabbarController} http://docs.smartface.io/#!/api/UI.BottomTabBarController\n ",
+      "start": 170,
+      "end": 273,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {TabBarItem} http://docs.smartface.io/#!/api/UI.TabBarItem\n ",
+      "start": 275,
+      "end": 354,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {Image} http://docs.smartface.io/#!/api/UI.Image\n ",
+      "start": 356,
+      "end": 425,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @external {Color} http://docs.smartface.io/#!/api/UI.Color\n ",
+      "start": 427,
+      "end": 496,
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 0
+        },
+        "end": {
+          "line": 23,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object<string,string|object>} BottomTabBarItem Represent {@link TabBarItem} params\n * @property {Image} icon\n * @property {string} title\n ",
+      "start": 498,
+      "end": 655,
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 0
+        },
+        "end": {
+          "line": 29,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {RouterParams} BottomTabBarRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {object} tabbarParams See {@link BottomTabbarController}\n ",
+      "start": 657,
+      "end": 859,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 0
+        },
+        "end": {
+          "line": 35,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {RouterParams} NativeStackRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {function():HeaderBarParams} headerBarParams See {@link NavigationController}\n ",
+      "start": 861,
+      "end": 1083,
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 0
+        },
+        "end": {
+          "line": 41,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object} HeaderBarParams\n * @property {{transulent: boolean, alpha: number, backIndicatorImage: Image, backIndicatorTransitionMaskImage: Image, prefersLargeTitles: boolean}} ios\n * @property {boolean} borderVisibility\n * @property {Color} titleColor\n * @property {boolean} transparent\n * @property {boolean} visible\n * @property {Color} backgroundColor\n ",
+      "start": 1085,
+      "end": 1457,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 0
+        },
+        "end": {
+          "line": 51,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef NavigationControllerTransformEvent\n * @property {Page} frompage\n * @property {Page} topage\n * @property {{operation: number}} operation\n ",
+      "start": 1459,
+      "end": 1614,
+      "loc": {
+        "start": {
+          "line": 53,
+          "column": 0
+        },
+        "end": {
+          "line": 58,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object} RouteMatch\n * @property {boolean} isExact if Requested path is an exact match or not.\n * @property {Object} params\n * @property {string} path\n * @property {string} url\n ",
+      "start": 1616,
+      "end": 1812,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 0
+        },
+        "end": {
+          "line": 66,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object} RouteLocation\n * @property {string} pathname\n * @property {string} search\n * @property {string} hash\n * @property {RouteState} state\n * @property {string} key\n ",
+      "start": 1814,
+      "end": 2001,
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 0
+        },
+        "end": {
+          "line": 75,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object} RouteParams\n * @property {string} path\n * @property {Array<Route>} routes\n * @property {boolean} exact\n * @property {function(route: Route, nextState: RouteState)} routeShouldMatch Handles if route is mathed as request url\n * @property {function(Router: Router, route: Route)} routeDidEnter Handles if route is displayed\n * @property {function(Router: Router, route: Route)} routeDidExit Handles if route is removed\n ",
+      "start": 2003,
+      "end": 2447,
+      "loc": {
+        "start": {
+          "line": 77,
+          "column": 0
+        },
+        "end": {
+          "line": 85,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {object} RouteState\n * @property {object} routeData\n * @property {string} action\n * @property {RouteMatch} match\n * @property {object} view\n * @property {object} routingState Keeps user data when route runs\n ",
+      "start": 2449,
+      "end": 2675,
+      "loc": {
+        "start": {
+          "line": 87,
+          "column": 0
+        },
+        "end": {
+          "line": 94,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteShouldMatchHandler\n ",
+      "start": 2677,
+      "end": 2768,
+      "loc": {
+        "start": {
+          "line": 96,
+          "column": 0
+        },
+        "end": {
+          "line": 98,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteBuildHandler\n ",
+      "start": 2770,
+      "end": 2855,
+      "loc": {
+        "start": {
+          "line": 100,
+          "column": 0
+        },
+        "end": {
+          "line": 102,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {function(path: string, routeData: object, action: string, okFn: function)} RouterBlockHandler\n *\n ",
+      "start": 2857,
+      "end": 2974,
+      "loc": {
+        "start": {
+          "line": 104,
+          "column": 0
+        },
+        "end": {
+          "line": 107,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * @typedef {function(location: RouteLocation, action: string)} HistoryListener\n ",
+      "start": 2976,
+      "end": 3063,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 0
+        },
+        "end": {
+          "line": 111,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * History implementation\n *\n * @typedef {object} History\n *\n * @property {number} length\n * @property {string} action\n * @property {number} index\n * @property {Array<RouteLocation>} entries\n * @property {function} createHref\n * @property {function(path: string, data: object)} push\n * @property {function(path: string)} silencePush\n * @property {function(path: string, data: object)} replace\n * @property {function} rollback\n * @property {function(index: number)} go\n * @property {function} clear\n * @property {function} goBack\n * @property {function} goForward\n * @property {function(index: number):boolean} canGo\n * @property {function(fn: RouterBlockHandler):function} block\n * @property {function(fn: HistoryListener):function} listen\n *\n ",
+      "start": 3064,
+      "end": 3814,
+      "loc": {
+        "start": {
+          "line": 112,
+          "column": 0
+        },
+        "end": {
+          "line": 134,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 3815,
+      "end": 3815,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 0
+        },
+        "end": {
+          "line": 135,
+          "column": 0
+        }
+      }
+    }
+  ]
+}
