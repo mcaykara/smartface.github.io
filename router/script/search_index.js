@@ -199,37 +199,37 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber389",
+    "test-file/__test__/Router.test.js.html#lineNumber436",
     "Router calls back to parent if its history is empty",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber497",
+    "test-file/__test__/Router.test.js.html#lineNumber544",
     "Router can be blocked",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber438",
+    "test-file/__test__/Router.test.js.html#lineNumber485",
     "Router can call a relative path",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber570",
+    "test-file/__test__/Router.test.js.html#lineNumber617",
     "Router can call child Routers",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber538",
+    "test-file/__test__/Router.test.js.html#lineNumber585",
     "Router can redirect to specified route with route-data when route has 'to' attribute",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber228",
+    "test-file/__test__/Router.test.js.html#lineNumber275",
     "Router finds target by url",
     "test"
   ],
@@ -241,7 +241,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber343",
+    "test-file/__test__/Router.test.js.html#lineNumber390",
     "Router gets history back",
     "test"
   ],
@@ -253,20 +253,14 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber285",
+    "test-file/__test__/Router.test.js.html#lineNumber332",
     "Router return only root path if any route doesn't be matched",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber317",
+    "test-file/__test__/Router.test.js.html#lineNumber364",
     "Router sends data and params to specified route",
-    "test"
-  ],
-  [
-    "",
-    "test-file/__test__/Router.test.js.html#lineNumber132",
-    "Router should add last route to child owner router whenever a route redirects.",
     "test"
   ],
   [
@@ -277,8 +271,20 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber631",
+    "test-file/__test__/Router.test.js.html#lineNumber171",
+    "Router should add last route to root router whenever a route redirects.",
+    "test"
+  ],
+  [
+    "",
+    "test-file/__test__/Router.test.js.html#lineNumber678",
     "Router should be routed from child Routers",
+    "test"
+  ],
+  [
+    "",
+    "test-file/__test__/Router.test.js.html#lineNumber139",
+    "Router should call route's build when history goes back",
     "test"
   ],
   [

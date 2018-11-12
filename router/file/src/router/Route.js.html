@@ -266,6 +266,17 @@ class Route {
     return this._state;
   }
 
+  toJSON() {
+    return {
+      type: &quot;route&quot;,
+      exac: this._exact,
+      strict: this._strict,
+      sensitive: this._sensitive,
+      path: this._path,
+      state: { match: this._state.match }
+    };
+  }
+
   /**
    * Simple Object representation of the route
    *

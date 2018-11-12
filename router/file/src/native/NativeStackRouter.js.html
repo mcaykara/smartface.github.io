@@ -255,10 +255,8 @@ class NativeStackRouter extends NativeRouterBase {
           // set Router to skip next history change
           // this._fromRouter = false;
           try {
-            console.log(JSON.stringify(this.getHistoryasArray()));
             this._historyController.preventDefault();
             this._historyController.goBack();
-            console.log(JSON.stringify(this.getHistoryasArray()));
             this._fromRouter = false;
             this.dispatch(
               this._historyController.history.location,
@@ -269,10 +267,7 @@ class NativeStackRouter extends NativeRouterBase {
           } catch (e) {
             throw e;
           } finally {
-            // this._fromRouter = true;
           }
-          // and history goes back.
-          // this.goBack();
         }
       }
     );
@@ -288,7 +283,6 @@ class NativeStackRouter extends NativeRouterBase {
   }
 
   push(path, routeData = {}) {
-    // console.log(`nav push ${path} ${this._currentUrl}`);
     if (path === this._currentUrl) {
       Object.assign(
         this._historyController.history.location.state.routeData,
@@ -307,7 +301,6 @@ class NativeStackRouter extends NativeRouterBase {
     switch (state.action) {
       case &quot;REPLACE&quot;:
       case &quot;PUSH&quot;:
-        console.log(`push ${this._currentUrl} - ${route.getUrlPath()}`);
         if (this._fromRouter &amp;&amp; this._currentUrl !== route.getUrlPath())
           this._renderer.pushChild(state.view);
         break;

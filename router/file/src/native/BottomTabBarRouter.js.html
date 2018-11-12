@@ -349,13 +349,7 @@ class BottomTabBarRouter extends NativeRouterBase {
   }
 
   push(path, routeData = {}) {
-    console.log(
-      `${path} ${this._fromRouter} ${this.resolveIndex(path)} ${
-        this._tabStatus
-      }`
-    );
     if (this._fromRouter === false) {
-      console.log(`bottombar.push`);
       const index = this.resolveIndex(path);
       if (this.isVisited(index)) {
         return super.push(this._visitedIndexes[index].path, routeData);

@@ -87,20 +87,23 @@ const dispatch = (location, action) =&gt; {
 
 /**
  * @typedef {object} RouterParams
- * @property {!string} [=false] path Routing path
- * @property {!Array&lt;Route&gt;} [=[]] routes Child routes
- * @property {?boolean} [=false] exact If it&apos;s only exact match or not
- * @property {?boolean} [=false] isRoot If it&apos;s root router
+ * @property {!string} [path]  Routing path
+ * @property {!Array&lt;Route&gt;} [routes=[]] Child routes
+ * @property {?boolean} [exact=false] If it&apos;s only exact match or not
+ * @property {?boolean} [isRoot=false] If it&apos;s root router
  * @property {?(string|null)} to Redirection path
- * @property {?boolean} [=false] strict
- * @property {?boolean} [=false] sensitive Path is case sensitive or not
+ * @property {?boolean} [strict=false] strict
+ * @property {?boolean} [sensitive=false] sensitive Path is case sensitive or not
  * @property {?function(router: Router, prevUrl: string, currentUrl: stirng, action: string)} routerDidEnter Handles the Router is actived.
  * @property {?function(router: Router, prevUrl: string, action: string)} routerDidExit Handles the Router is deactived.
  */
 
 /**
  * Router Base
- * Base Router implementation
+ *
+ * @description
+ * Router implementation creates a thin layer between view and application layers
+ * to handle view changes and to create loosely coupled and resuable routing logic.
  *
  * @class
  * @example
@@ -370,11 +373,6 @@ class Router extends Route {
   addRouteBlocker(fn) {
     Router.blocker = Router.createBlocker(fn);
     this._unblock = () =&gt; (Router.blocker = null);
-    /*this._historyController.block(
-      (location, action) =&gt; callback =&gt; {
-        fn(location, action, callback);
-      }
-    );*/
 
     return this._unblock;
   }
@@ -436,9 +434,13 @@ class Router extends Route {
           route.routeShouldMatch(route, { match, action, routeData }) === true
         ) {
           if (route.getRedirectto()) {
-            actions = [];
-            target.routeRollback();
-            return this.redirectRoute(route, routeData, action);
+            actions = []; // reset router views
+            target.routeRollback(); // remove redirected path target Router
+            //  because real path can be owned by different router.
+            // -----
+            // And then trigger redirection path.
+            target.redirectRoute(route, routeData, action);
+            return false;
           }
 
           const routingState =
@@ -452,7 +454,9 @@ class Router extends Route {
 
           route.setState({ match, action, routeData, routingState });
 
-          // If child router then push or pop route to child route&apos;s history
+          // If route owned by current child router which is different from target router
+          // then push or pop route to child router&apos;s history.
+          // Because current router isn&apos;t aware of the route.
           if (target != this &amp;&amp; this._currentUrl !== match.url) {
             // if (!this.isUrlCurrent(match.url, action)) {
             this._historyController.preventDefault();
@@ -487,6 +491,8 @@ class Router extends Route {
         return true;
       }
     });
+
+    return true;
   }
 
   /**
@@ -575,6 +581,7 @@ class Router extends Route {
   redirectRoute(route, routeData, action) {
     // redirection of a route
     this.push(route.getRedirectto(), routeData); // and add new route
+    // this._historyController.push(route.getRedirectto(), routeData);
   }
 
   /**
