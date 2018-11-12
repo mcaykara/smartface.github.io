@@ -18,6 +18,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@smartface/router/src/native/nativemodalrouter.js~nativemodalrouter",
+    "class/src/native/NativeModalRouter.js~NativeModalRouter.html",
+    "<span>NativeModalRouter</span> <span class=\"search-result-import-path\">@smartface/router/src/native/NativeModalRouter.js</span>",
+    "class"
+  ],
+  [
     "@smartface/router/src/native/nativerouter.js~nativerouter",
     "class/src/native/NativeRouter.js~NativeRouter.html",
     "<span>NativeRouter</span> <span class=\"search-result-import-path\">@smartface/router/src/native/NativeRouter.js</span>",
@@ -193,37 +199,37 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber223",
+    "test-file/__test__/Router.test.js.html#lineNumber389",
     "Router calls back to parent if its history is empty",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber332",
+    "test-file/__test__/Router.test.js.html#lineNumber497",
     "Router can be blocked",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber271",
+    "test-file/__test__/Router.test.js.html#lineNumber438",
     "Router can call a relative path",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber403",
+    "test-file/__test__/Router.test.js.html#lineNumber570",
     "Router can call child Routers",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber372",
-    "Router can redirect to specified route when route has 'to' attribute",
+    "test-file/__test__/Router.test.js.html#lineNumber538",
+    "Router can redirect to specified route with route-data when route has 'to' attribute",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber54",
+    "test-file/__test__/Router.test.js.html#lineNumber228",
     "Router finds target by url",
     "test"
   ],
@@ -235,7 +241,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber174",
+    "test-file/__test__/Router.test.js.html#lineNumber343",
     "Router gets history back",
     "test"
   ],
@@ -247,19 +253,31 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber111",
+    "test-file/__test__/Router.test.js.html#lineNumber285",
     "Router return only root path if any route doesn't be matched",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber143",
+    "test-file/__test__/Router.test.js.html#lineNumber317",
     "Router sends data and params to specified route",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber462",
+    "test-file/__test__/Router.test.js.html#lineNumber132",
+    "Router should add last route to child owner router whenever a route redirects.",
+    "test"
+  ],
+  [
+    "",
+    "test-file/__test__/Router.test.js.html#lineNumber53",
+    "Router should add last route to child owner router.",
+    "test"
+  ],
+  [
+    "",
+    "test-file/__test__/Router.test.js.html#lineNumber631",
     "Router should be routed from child Routers",
     "test"
   ],
@@ -684,6 +702,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/native/bottomtabbarrouter.js~bottomtabbaritem",
+    "typedef/index.html#static-typedef-BottomTabBarItem",
+    "src/native/BottomTabBarRouter.js~BottomTabBarItem",
+    "typedef"
+  ],
+  [
     "src/native/bottomtabbarrouter.js~bottomtabbarrouter#constructor",
     "class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html#instance-constructor-constructor",
     "src/native/BottomTabBarRouter.js~BottomTabBarRouter#constructor",
@@ -726,12 +750,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/native/bottomtabbarrouter.js~bottomtabbarrouter#routetoindex",
-    "class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html#instance-method-routetoIndex",
-    "src/native/BottomTabBarRouter.js~BottomTabBarRouter#routetoIndex",
-    "method"
-  ],
-  [
     "src/native/bottomtabbarrouter.js~bottomtabbarrouter#setvisited",
     "class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html#instance-method-setVisited",
     "src/native/BottomTabBarRouter.js~BottomTabBarRouter#setVisited",
@@ -742,6 +760,12 @@ window.esdocSearchIndex = [
     "class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html#static-method-of",
     "src/native/BottomTabBarRouter.js~BottomTabBarRouter.of",
     "method"
+  ],
+  [
+    "src/native/bottomtabbarrouter.js~bottomtabbarrouterparams",
+    "typedef/index.html#static-typedef-BottomTabBarRouterParams",
+    "src/native/BottomTabBarRouter.js~BottomTabBarRouterParams",
+    "typedef"
   ],
   [
     "src/native/iosrenderer.js",
@@ -822,6 +846,36 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/native/nativemodalrouter.js",
+    "file/src/native/NativeModalRouter.js.html",
+    "src/native/NativeModalRouter.js",
+    "file"
+  ],
+  [
+    "src/native/nativemodalrouter.js~nativemodalrouter#addchildrouter",
+    "class/src/native/NativeModalRouter.js~NativeModalRouter.html#instance-method-addChildRouter",
+    "src/native/NativeModalRouter.js~NativeModalRouter#addChildRouter",
+    "method"
+  ],
+  [
+    "src/native/nativemodalrouter.js~nativemodalrouter#constructor",
+    "class/src/native/NativeModalRouter.js~NativeModalRouter.html#instance-constructor-constructor",
+    "src/native/NativeModalRouter.js~NativeModalRouter#constructor",
+    "method"
+  ],
+  [
+    "src/native/nativemodalrouter.js~nativemodalrouter#routewillenter",
+    "class/src/native/NativeModalRouter.js~NativeModalRouter.html#instance-method-routeWillEnter",
+    "src/native/NativeModalRouter.js~NativeModalRouter#routeWillEnter",
+    "method"
+  ],
+  [
+    "src/native/nativemodalrouter.js~nativemodalrouter.of",
+    "class/src/native/NativeModalRouter.js~NativeModalRouter.html#static-method-of",
+    "src/native/NativeModalRouter.js~NativeModalRouter.of",
+    "method"
+  ],
+  [
     "src/native/nativerouter.js",
     "file/src/native/NativeRouter.js.html",
     "src/native/NativeRouter.js",
@@ -831,6 +885,12 @@ window.esdocSearchIndex = [
     "src/native/nativerouter.js~nativerouter#addchildrouter",
     "class/src/native/NativeRouter.js~NativeRouter.html#instance-method-addChildRouter",
     "src/native/NativeRouter.js~NativeRouter#addChildRouter",
+    "method"
+  ],
+  [
+    "src/native/nativerouter.js~nativerouter#constructor",
+    "class/src/native/NativeRouter.js~NativeRouter.html#instance-constructor-constructor",
+    "src/native/NativeRouter.js~NativeRouter#constructor",
     "method"
   ],
   [
@@ -856,6 +916,12 @@ window.esdocSearchIndex = [
     "file/src/native/NativeStackRouter.js.html",
     "src/native/NativeStackRouter.js",
     "file"
+  ],
+  [
+    "src/native/nativestackrouter.js~headerbarparams",
+    "typedef/index.html#static-typedef-HeaderBarParams",
+    "src/native/NativeStackRouter.js~HeaderBarParams",
+    "typedef"
   ],
   [
     "src/native/nativestackrouter.js~nativestackrouter#addnavigatorchangelistener",
@@ -898,6 +964,18 @@ window.esdocSearchIndex = [
     "class/src/native/NativeStackRouter.js~NativeStackRouter.html#static-method-of",
     "src/native/NativeStackRouter.js~NativeStackRouter.of",
     "method"
+  ],
+  [
+    "src/native/nativestackrouter.js~nativestackrouterparams",
+    "typedef/index.html#static-typedef-NativeStackRouterParams",
+    "src/native/NativeStackRouter.js~NativeStackRouterParams",
+    "typedef"
+  ],
+  [
+    "src/native/nativestackrouter.js~navigationcontrollertransformevent",
+    "typedef/index.html#static-typedef-NavigationControllerTransformEvent",
+    "src/native/NativeStackRouter.js~NavigationControllerTransformEvent",
+    "typedef"
   ],
   [
     "src/native/renderer.js",
@@ -1092,6 +1170,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/router/route.js~routelocation",
+    "typedef/index.html#static-typedef-RouteLocation",
+    "src/router/Route.js~RouteLocation",
+    "typedef"
+  ],
+  [
+    "src/router/route.js~routematch",
+    "typedef/index.html#static-typedef-RouteMatch",
+    "src/router/Route.js~RouteMatch",
+    "typedef"
+  ],
+  [
+    "src/router/route.js~routeparams",
+    "typedef/index.html#static-typedef-RouteParams",
+    "src/router/Route.js~RouteParams",
+    "typedef"
+  ],
+  [
     "src/router/route.js~routepath#clone",
     "class/src/router/Route.js~RoutePath.html#instance-method-clone",
     "src/router/Route.js~RoutePath#clone",
@@ -1134,10 +1230,22 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/router/route.js~routestate",
+    "typedef/index.html#static-typedef-RouteState",
+    "src/router/Route.js~RouteState",
+    "typedef"
+  ],
+  [
     "src/router/router.js",
     "file/src/router/Router.js.html",
     "src/router/Router.js",
     "file"
+  ],
+  [
+    "src/router/router.js~router#_historycontroller",
+    "class/src/router/Router.js~Router.html#instance-member-_historyController",
+    "src/router/Router.js~Router#_historyController",
+    "member"
   ],
   [
     "src/router/router.js~router#addrouteblocker",
@@ -1290,18 +1398,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/types.js~bottomtabbaritem",
-    "typedef/index.html#static-typedef-BottomTabBarItem",
-    "src/types.js~BottomTabBarItem",
-    "typedef"
-  ],
-  [
-    "src/types.js~bottomtabbarrouterparams",
-    "typedef/index.html#static-typedef-BottomTabBarRouterParams",
-    "src/types.js~BottomTabBarRouterParams",
-    "typedef"
-  ],
-  [
     "src/types.js~bottomtabbarcontroller",
     "http://docs.smartface.io/#!/api/UI.BottomTabBarController",
     "src/types.js~BottomTabbarController",
@@ -1312,12 +1408,6 @@ window.esdocSearchIndex = [
     "http://docs.smartface.io/#!/api/UI.Color",
     "src/types.js~Color",
     "external"
-  ],
-  [
-    "src/types.js~headerbarparams",
-    "typedef/index.html#static-typedef-HeaderBarParams",
-    "src/types.js~HeaderBarParams",
-    "typedef"
   ],
   [
     "src/types.js~history",
@@ -1338,22 +1428,10 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "src/types.js~nativestackrouterparams",
-    "typedef/index.html#static-typedef-NativeStackRouterParams",
-    "src/types.js~NativeStackRouterParams",
-    "typedef"
-  ],
-  [
     "src/types.js~navigationcontroller",
     "http://docs.smartface.io/#!/api/UI.NavigationController",
     "src/types.js~NavigationController",
     "external"
-  ],
-  [
-    "src/types.js~navigationcontrollertransformevent",
-    "typedef/index.html#static-typedef-NavigationControllerTransformEvent",
-    "src/types.js~NavigationControllerTransformEvent",
-    "typedef"
   ],
   [
     "src/types.js~page",
@@ -1368,33 +1446,9 @@ window.esdocSearchIndex = [
     "typedef"
   ],
   [
-    "src/types.js~routelocation",
-    "typedef/index.html#static-typedef-RouteLocation",
-    "src/types.js~RouteLocation",
-    "typedef"
-  ],
-  [
-    "src/types.js~routematch",
-    "typedef/index.html#static-typedef-RouteMatch",
-    "src/types.js~RouteMatch",
-    "typedef"
-  ],
-  [
-    "src/types.js~routeparams",
-    "typedef/index.html#static-typedef-RouteParams",
-    "src/types.js~RouteParams",
-    "typedef"
-  ],
-  [
     "src/types.js~routeshouldmatchhandler",
     "typedef/index.html#static-typedef-RouteShouldMatchHandler",
     "src/types.js~RouteShouldMatchHandler",
-    "typedef"
-  ],
-  [
-    "src/types.js~routestate",
-    "typedef/index.html#static-typedef-RouteState",
-    "src/types.js~RouteState",
     "typedef"
   ],
   [

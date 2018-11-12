@@ -1,7 +1,7 @@
 {
-  "coverage": "51.03%",
-  "expectCount": 241,
-  "actualCount": 123,
+  "coverage": "51.19%",
+  "expectCount": 252,
+  "actualCount": 129,
   "files": {
     "src/common/RouteStore.js": {
       "expectCount": 6,
@@ -16,12 +16,11 @@
       ]
     },
     "src/common/createHistory.js": {
-      "expectCount": 4,
+      "expectCount": 3,
       "actualCount": 1,
       "undocumentLines": [
         2,
-        3,
-        4
+        3
       ]
     },
     "src/common/createTransitionManager.js": {
@@ -84,24 +83,23 @@
       ]
     },
     "src/native/BottomTabBarRouter.js": {
-      "expectCount": 28,
-      "actualCount": 13,
+      "expectCount": 26,
+      "actualCount": 12,
       "undocumentLines": [
-        3,
-        4,
-        5,
-        6,
-        7,
-        10,
-        22,
-        117,
-        119,
-        120,
-        121,
-        122,
-        152,
-        164,
-        204
+        16,
+        17,
+        18,
+        20,
+        32,
+        126,
+        128,
+        129,
+        130,
+        131,
+        146,
+        158,
+        212,
+        281
       ]
     },
     "src/native/IOSRenderer.js": {
@@ -114,15 +112,24 @@
         127
       ]
     },
-    "src/native/NativeRouter.js": {
+    "src/native/NativeModalRouter.js": {
       "expectCount": 9,
-      "actualCount": 4,
+      "actualCount": 5,
       "undocumentLines": [
         3,
         4,
         5,
-        49,
-        73
+        78
+      ]
+    },
+    "src/native/NativeRouter.js": {
+      "expectCount": 9,
+      "actualCount": 5,
+      "undocumentLines": [
+        3,
+        4,
+        5,
+        79
       ]
     },
     "src/native/NativeRouterBase.js": {
@@ -137,16 +144,16 @@
       "expectCount": 18,
       "actualCount": 8,
       "undocumentLines": [
-        3,
-        4,
-        5,
-        6,
-        117,
-        118,
-        121,
-        145,
-        155,
-        185
+        31,
+        32,
+        33,
+        143,
+        144,
+        147,
+        171,
+        181,
+        220,
+        235
       ]
     },
     "src/native/Renderer.js": {
@@ -187,51 +194,55 @@
       ]
     },
     "src/router/Route.js": {
-      "expectCount": 42,
+      "expectCount": 41,
       "actualCount": 26,
       "undocumentLines": [
-        3,
-        4,
-        27,
-        107,
-        113,
-        114,
-        115,
-        116,
-        117,
-        118,
-        119,
-        120,
-        121,
-        122,
-        123,
-        281
+        40,
+        66,
+        154,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        339
       ]
     },
     "src/router/Router.js": {
-      "expectCount": 51,
-      "actualCount": 31,
+      "expectCount": 57,
+      "actualCount": 32,
       "undocumentLines": [
         3,
         4,
         5,
         6,
-        10,
-        134,
-        159,
-        160,
-        182,
-        183,
-        184,
-        185,
+        11,
+        12,
+        13,
+        131,
+        135,
+        147,
+        172,
+        173,
+        196,
         197,
-        272,
-        292,
-        321,
-        369,
-        374,
-        375,
-        636
+        198,
+        199,
+        227,
+        232,
+        302,
+        323,
+        403,
+        411,
+        412,
+        690,
+        696
       ]
     },
     "src/utils/map.js": {

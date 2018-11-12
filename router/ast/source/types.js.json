@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 3815,
+  "end": 2062,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 135,
+      "line": 63,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 3815,
+    "end": 2062,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 135,
+        "line": 63,
         "column": 0
       }
     },
@@ -129,160 +129,16 @@
       },
       {
         "type": "CommentBlock",
-        "value": "*\n * @typedef {object<string,string|object>} BottomTabBarItem Represent {@link TabBarItem} params\n * @property {Image} icon\n * @property {string} title\n ",
+        "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteShouldMatchHandler\n ",
         "start": 498,
-        "end": 655,
+        "end": 589,
         "loc": {
           "start": {
             "line": 25,
             "column": 0
           },
           "end": {
-            "line": 29,
-            "column": 3
-          }
-        }
-      },
-      {
-        "type": "CommentBlock",
-        "value": "*\n * @typedef {RouterParams} BottomTabBarRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {object} tabbarParams See {@link BottomTabbarController}\n ",
-        "start": 657,
-        "end": 859,
-        "loc": {
-          "start": {
-            "line": 31,
-            "column": 0
-          },
-          "end": {
-            "line": 35,
-            "column": 3
-          }
-        }
-      },
-      {
-        "type": "CommentBlock",
-        "value": "*\n * @typedef {RouterParams} NativeStackRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {function():HeaderBarParams} headerBarParams See {@link NavigationController}\n ",
-        "start": 861,
-        "end": 1083,
-        "loc": {
-          "start": {
-            "line": 37,
-            "column": 0
-          },
-          "end": {
-            "line": 41,
-            "column": 3
-          }
-        }
-      },
-      {
-        "type": "CommentBlock",
-        "value": "*\n * @typedef {object} HeaderBarParams\n * @property {{transulent: boolean, alpha: number, backIndicatorImage: Image, backIndicatorTransitionMaskImage: Image, prefersLargeTitles: boolean}} ios\n * @property {boolean} borderVisibility\n * @property {Color} titleColor\n * @property {boolean} transparent\n * @property {boolean} visible\n * @property {Color} backgroundColor\n ",
-        "start": 1085,
-        "end": 1457,
-        "loc": {
-          "start": {
-            "line": 43,
-            "column": 0
-          },
-          "end": {
-            "line": 51,
-            "column": 3
-          }
-        }
-      },
-      {
-        "type": "CommentBlock",
-        "value": "*\n * @typedef NavigationControllerTransformEvent\n * @property {Page} frompage\n * @property {Page} topage\n * @property {{operation: number}} operation\n ",
-        "start": 1459,
-        "end": 1614,
-        "loc": {
-          "start": {
-            "line": 53,
-            "column": 0
-          },
-          "end": {
-            "line": 58,
-            "column": 3
-          }
-        }
-      },
-      {
-        "type": "CommentBlock",
-        "value": "*\n * @typedef {object} RouteMatch\n * @property {boolean} isExact if Requested path is an exact match or not.\n * @property {Object} params\n * @property {string} path\n * @property {string} url\n ",
-        "start": 1616,
-        "end": 1812,
-        "loc": {
-          "start": {
-            "line": 60,
-            "column": 0
-          },
-          "end": {
-            "line": 66,
-            "column": 3
-          }
-        }
-      },
-      {
-        "type": "CommentBlock",
-        "value": "*\n * @typedef {object} RouteLocation\n * @property {string} pathname\n * @property {string} search\n * @property {string} hash\n * @property {RouteState} state\n * @property {string} key\n ",
-        "start": 1814,
-        "end": 2001,
-        "loc": {
-          "start": {
-            "line": 68,
-            "column": 0
-          },
-          "end": {
-            "line": 75,
-            "column": 3
-          }
-        }
-      },
-      {
-        "type": "CommentBlock",
-        "value": "*\n * @typedef {object} RouteParams\n * @property {string} path\n * @property {Array<Route>} routes\n * @property {boolean} exact\n * @property {function(route: Route, nextState: RouteState)} routeShouldMatch Handles if route is mathed as request url\n * @property {function(Router: Router, route: Route)} routeDidEnter Handles if route is displayed\n * @property {function(Router: Router, route: Route)} routeDidExit Handles if route is removed\n ",
-        "start": 2003,
-        "end": 2447,
-        "loc": {
-          "start": {
-            "line": 77,
-            "column": 0
-          },
-          "end": {
-            "line": 85,
-            "column": 3
-          }
-        }
-      },
-      {
-        "type": "CommentBlock",
-        "value": "*\n * @typedef {object} RouteState\n * @property {object} routeData\n * @property {string} action\n * @property {RouteMatch} match\n * @property {object} view\n * @property {object} routingState Keeps user data when route runs\n ",
-        "start": 2449,
-        "end": 2675,
-        "loc": {
-          "start": {
-            "line": 87,
-            "column": 0
-          },
-          "end": {
-            "line": 94,
-            "column": 3
-          }
-        }
-      },
-      {
-        "type": "CommentBlock",
-        "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteShouldMatchHandler\n ",
-        "start": 2677,
-        "end": 2768,
-        "loc": {
-          "start": {
-            "line": 96,
-            "column": 0
-          },
-          "end": {
-            "line": 98,
+            "line": 27,
             "column": 3
           }
         }
@@ -290,15 +146,15 @@
       {
         "type": "CommentBlock",
         "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteBuildHandler\n ",
-        "start": 2770,
-        "end": 2855,
+        "start": 591,
+        "end": 676,
         "loc": {
           "start": {
-            "line": 100,
+            "line": 29,
             "column": 0
           },
           "end": {
-            "line": 102,
+            "line": 31,
             "column": 3
           }
         }
@@ -306,15 +162,15 @@
       {
         "type": "CommentBlock",
         "value": "*\n * @typedef {function(path: string, routeData: object, action: string, okFn: function)} RouterBlockHandler\n *\n ",
-        "start": 2857,
-        "end": 2974,
+        "start": 678,
+        "end": 795,
         "loc": {
           "start": {
-            "line": 104,
+            "line": 33,
             "column": 0
           },
           "end": {
-            "line": 107,
+            "line": 36,
             "column": 3
           }
         }
@@ -322,31 +178,31 @@
       {
         "type": "CommentBlock",
         "value": "*\n * @typedef {function(location: RouteLocation, action: string)} HistoryListener\n ",
-        "start": 2976,
-        "end": 3063,
+        "start": 797,
+        "end": 884,
         "loc": {
           "start": {
-            "line": 109,
+            "line": 38,
             "column": 0
           },
           "end": {
-            "line": 111,
+            "line": 40,
             "column": 3
           }
         }
       },
       {
         "type": "CommentBlock",
-        "value": "*\n * History implementation\n *\n * @typedef {object} History\n *\n * @property {number} length\n * @property {string} action\n * @property {number} index\n * @property {Array<RouteLocation>} entries\n * @property {function} createHref\n * @property {function(path: string, data: object)} push\n * @property {function(path: string)} silencePush\n * @property {function(path: string, data: object)} replace\n * @property {function} rollback\n * @property {function(index: number)} go\n * @property {function} clear\n * @property {function} goBack\n * @property {function} goForward\n * @property {function(index: number):boolean} canGo\n * @property {function(fn: RouterBlockHandler):function} block\n * @property {function(fn: HistoryListener):function} listen\n *\n ",
-        "start": 3064,
-        "end": 3814,
+        "value": "*\n * History implementation\n *\n * @typedef {object} History\n *\n * @property {number} length Length of the history stack\n * @property {string} action Last action\n * @property {number} index Current active index of the history\n * @property {Array<RouteLocation>} entries\n * @property {function} createHref Creates an appropriate url given data\n * @property {function(path: string, data: object)} push Pushes a new entry\n * @property {function(path: string, data: object)} replace Replaces specified history entry with a desired one\n * @property {function} rollback Rollback last entry\n * @property {function(index: number)} go Jumps to desired history entry by index\n * @property {function} clear Clears all history\n * @property {function} goBack Jumps to previous entry\n * @property {function} goForward Jumps to next entry\n * @property {function(index: number):boolean} canGo Checks if history goes back or not\n * @property {function(fn: RouterBlockHandler):function} block Blocks history changes to ask user or run an another process then resume or break it.\n * @property {function(fn: HistoryListener):function} listen Adds event-handlers to listen history changes.\n *\n ",
+        "start": 885,
+        "end": 2061,
         "loc": {
           "start": {
-            "line": 112,
+            "line": 41,
             "column": 0
           },
           "end": {
-            "line": 134,
+            "line": 62,
             "column": 3
           }
         }
@@ -452,160 +308,16 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @typedef {object<string,string|object>} BottomTabBarItem Represent {@link TabBarItem} params\n * @property {Image} icon\n * @property {string} title\n ",
+      "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteShouldMatchHandler\n ",
       "start": 498,
-      "end": 655,
+      "end": 589,
       "loc": {
         "start": {
           "line": 25,
           "column": 0
         },
         "end": {
-          "line": 29,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {RouterParams} BottomTabBarRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {object} tabbarParams See {@link BottomTabbarController}\n ",
-      "start": 657,
-      "end": 859,
-      "loc": {
-        "start": {
-          "line": 31,
-          "column": 0
-        },
-        "end": {
-          "line": 35,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {RouterParams} NativeStackRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {function():HeaderBarParams} headerBarParams See {@link NavigationController}\n ",
-      "start": 861,
-      "end": 1083,
-      "loc": {
-        "start": {
-          "line": 37,
-          "column": 0
-        },
-        "end": {
-          "line": 41,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {object} HeaderBarParams\n * @property {{transulent: boolean, alpha: number, backIndicatorImage: Image, backIndicatorTransitionMaskImage: Image, prefersLargeTitles: boolean}} ios\n * @property {boolean} borderVisibility\n * @property {Color} titleColor\n * @property {boolean} transparent\n * @property {boolean} visible\n * @property {Color} backgroundColor\n ",
-      "start": 1085,
-      "end": 1457,
-      "loc": {
-        "start": {
-          "line": 43,
-          "column": 0
-        },
-        "end": {
-          "line": 51,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef NavigationControllerTransformEvent\n * @property {Page} frompage\n * @property {Page} topage\n * @property {{operation: number}} operation\n ",
-      "start": 1459,
-      "end": 1614,
-      "loc": {
-        "start": {
-          "line": 53,
-          "column": 0
-        },
-        "end": {
-          "line": 58,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {object} RouteMatch\n * @property {boolean} isExact if Requested path is an exact match or not.\n * @property {Object} params\n * @property {string} path\n * @property {string} url\n ",
-      "start": 1616,
-      "end": 1812,
-      "loc": {
-        "start": {
-          "line": 60,
-          "column": 0
-        },
-        "end": {
-          "line": 66,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {object} RouteLocation\n * @property {string} pathname\n * @property {string} search\n * @property {string} hash\n * @property {RouteState} state\n * @property {string} key\n ",
-      "start": 1814,
-      "end": 2001,
-      "loc": {
-        "start": {
-          "line": 68,
-          "column": 0
-        },
-        "end": {
-          "line": 75,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {object} RouteParams\n * @property {string} path\n * @property {Array<Route>} routes\n * @property {boolean} exact\n * @property {function(route: Route, nextState: RouteState)} routeShouldMatch Handles if route is mathed as request url\n * @property {function(Router: Router, route: Route)} routeDidEnter Handles if route is displayed\n * @property {function(Router: Router, route: Route)} routeDidExit Handles if route is removed\n ",
-      "start": 2003,
-      "end": 2447,
-      "loc": {
-        "start": {
-          "line": 77,
-          "column": 0
-        },
-        "end": {
-          "line": 85,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {object} RouteState\n * @property {object} routeData\n * @property {string} action\n * @property {RouteMatch} match\n * @property {object} view\n * @property {object} routingState Keeps user data when route runs\n ",
-      "start": 2449,
-      "end": 2675,
-      "loc": {
-        "start": {
-          "line": 87,
-          "column": 0
-        },
-        "end": {
-          "line": 94,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteShouldMatchHandler\n ",
-      "start": 2677,
-      "end": 2768,
-      "loc": {
-        "start": {
-          "line": 96,
-          "column": 0
-        },
-        "end": {
-          "line": 98,
+          "line": 27,
           "column": 3
         }
       }
@@ -613,15 +325,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteBuildHandler\n ",
-      "start": 2770,
-      "end": 2855,
+      "start": 591,
+      "end": 676,
       "loc": {
         "start": {
-          "line": 100,
+          "line": 29,
           "column": 0
         },
         "end": {
-          "line": 102,
+          "line": 31,
           "column": 3
         }
       }
@@ -629,15 +341,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n * @typedef {function(path: string, routeData: object, action: string, okFn: function)} RouterBlockHandler\n *\n ",
-      "start": 2857,
-      "end": 2974,
+      "start": 678,
+      "end": 795,
       "loc": {
         "start": {
-          "line": 104,
+          "line": 33,
           "column": 0
         },
         "end": {
-          "line": 107,
+          "line": 36,
           "column": 3
         }
       }
@@ -645,31 +357,31 @@
     {
       "type": "CommentBlock",
       "value": "*\n * @typedef {function(location: RouteLocation, action: string)} HistoryListener\n ",
-      "start": 2976,
-      "end": 3063,
+      "start": 797,
+      "end": 884,
       "loc": {
         "start": {
-          "line": 109,
+          "line": 38,
           "column": 0
         },
         "end": {
-          "line": 111,
+          "line": 40,
           "column": 3
         }
       }
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * History implementation\n *\n * @typedef {object} History\n *\n * @property {number} length\n * @property {string} action\n * @property {number} index\n * @property {Array<RouteLocation>} entries\n * @property {function} createHref\n * @property {function(path: string, data: object)} push\n * @property {function(path: string)} silencePush\n * @property {function(path: string, data: object)} replace\n * @property {function} rollback\n * @property {function(index: number)} go\n * @property {function} clear\n * @property {function} goBack\n * @property {function} goForward\n * @property {function(index: number):boolean} canGo\n * @property {function(fn: RouterBlockHandler):function} block\n * @property {function(fn: HistoryListener):function} listen\n *\n ",
-      "start": 3064,
-      "end": 3814,
+      "value": "*\n * History implementation\n *\n * @typedef {object} History\n *\n * @property {number} length Length of the history stack\n * @property {string} action Last action\n * @property {number} index Current active index of the history\n * @property {Array<RouteLocation>} entries\n * @property {function} createHref Creates an appropriate url given data\n * @property {function(path: string, data: object)} push Pushes a new entry\n * @property {function(path: string, data: object)} replace Replaces specified history entry with a desired one\n * @property {function} rollback Rollback last entry\n * @property {function(index: number)} go Jumps to desired history entry by index\n * @property {function} clear Clears all history\n * @property {function} goBack Jumps to previous entry\n * @property {function} goForward Jumps to next entry\n * @property {function(index: number):boolean} canGo Checks if history goes back or not\n * @property {function(fn: RouterBlockHandler):function} block Blocks history changes to ask user or run an another process then resume or break it.\n * @property {function(fn: HistoryListener):function} listen Adds event-handlers to listen history changes.\n *\n ",
+      "start": 885,
+      "end": 2061,
       "loc": {
         "start": {
-          "line": 112,
+          "line": 41,
           "column": 0
         },
         "end": {
-          "line": 134,
+          "line": 62,
           "column": 3
         }
       }
@@ -774,160 +486,16 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @typedef {object<string,string|object>} BottomTabBarItem Represent {@link TabBarItem} params\n * @property {Image} icon\n * @property {string} title\n ",
+      "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteShouldMatchHandler\n ",
       "start": 498,
-      "end": 655,
+      "end": 589,
       "loc": {
         "start": {
           "line": 25,
           "column": 0
         },
         "end": {
-          "line": 29,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {RouterParams} BottomTabBarRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {object} tabbarParams See {@link BottomTabbarController}\n ",
-      "start": 657,
-      "end": 859,
-      "loc": {
-        "start": {
-          "line": 31,
-          "column": 0
-        },
-        "end": {
-          "line": 35,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {RouterParams} NativeStackRouterParams\n * @property {Array<BottomTabBarItem>} items BottomTabBarItem collection\n * @property {function():HeaderBarParams} headerBarParams See {@link NavigationController}\n ",
-      "start": 861,
-      "end": 1083,
-      "loc": {
-        "start": {
-          "line": 37,
-          "column": 0
-        },
-        "end": {
-          "line": 41,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {object} HeaderBarParams\n * @property {{transulent: boolean, alpha: number, backIndicatorImage: Image, backIndicatorTransitionMaskImage: Image, prefersLargeTitles: boolean}} ios\n * @property {boolean} borderVisibility\n * @property {Color} titleColor\n * @property {boolean} transparent\n * @property {boolean} visible\n * @property {Color} backgroundColor\n ",
-      "start": 1085,
-      "end": 1457,
-      "loc": {
-        "start": {
-          "line": 43,
-          "column": 0
-        },
-        "end": {
-          "line": 51,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef NavigationControllerTransformEvent\n * @property {Page} frompage\n * @property {Page} topage\n * @property {{operation: number}} operation\n ",
-      "start": 1459,
-      "end": 1614,
-      "loc": {
-        "start": {
-          "line": 53,
-          "column": 0
-        },
-        "end": {
-          "line": 58,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {object} RouteMatch\n * @property {boolean} isExact if Requested path is an exact match or not.\n * @property {Object} params\n * @property {string} path\n * @property {string} url\n ",
-      "start": 1616,
-      "end": 1812,
-      "loc": {
-        "start": {
-          "line": 60,
-          "column": 0
-        },
-        "end": {
-          "line": 66,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {object} RouteLocation\n * @property {string} pathname\n * @property {string} search\n * @property {string} hash\n * @property {RouteState} state\n * @property {string} key\n ",
-      "start": 1814,
-      "end": 2001,
-      "loc": {
-        "start": {
-          "line": 68,
-          "column": 0
-        },
-        "end": {
-          "line": 75,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {object} RouteParams\n * @property {string} path\n * @property {Array<Route>} routes\n * @property {boolean} exact\n * @property {function(route: Route, nextState: RouteState)} routeShouldMatch Handles if route is mathed as request url\n * @property {function(Router: Router, route: Route)} routeDidEnter Handles if route is displayed\n * @property {function(Router: Router, route: Route)} routeDidExit Handles if route is removed\n ",
-      "start": 2003,
-      "end": 2447,
-      "loc": {
-        "start": {
-          "line": 77,
-          "column": 0
-        },
-        "end": {
-          "line": 85,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {object} RouteState\n * @property {object} routeData\n * @property {string} action\n * @property {RouteMatch} match\n * @property {object} view\n * @property {object} routingState Keeps user data when route runs\n ",
-      "start": 2449,
-      "end": 2675,
-      "loc": {
-        "start": {
-          "line": 87,
-          "column": 0
-        },
-        "end": {
-          "line": 94,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "CommentBlock",
-      "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteShouldMatchHandler\n ",
-      "start": 2677,
-      "end": 2768,
-      "loc": {
-        "start": {
-          "line": 96,
-          "column": 0
-        },
-        "end": {
-          "line": 98,
+          "line": 27,
           "column": 3
         }
       }
@@ -935,15 +503,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n * @typedef {function(route: Route, nextState: RouteState)} RouteBuildHandler\n ",
-      "start": 2770,
-      "end": 2855,
+      "start": 591,
+      "end": 676,
       "loc": {
         "start": {
-          "line": 100,
+          "line": 29,
           "column": 0
         },
         "end": {
-          "line": 102,
+          "line": 31,
           "column": 3
         }
       }
@@ -951,15 +519,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n * @typedef {function(path: string, routeData: object, action: string, okFn: function)} RouterBlockHandler\n *\n ",
-      "start": 2857,
-      "end": 2974,
+      "start": 678,
+      "end": 795,
       "loc": {
         "start": {
-          "line": 104,
+          "line": 33,
           "column": 0
         },
         "end": {
-          "line": 107,
+          "line": 36,
           "column": 3
         }
       }
@@ -967,31 +535,31 @@
     {
       "type": "CommentBlock",
       "value": "*\n * @typedef {function(location: RouteLocation, action: string)} HistoryListener\n ",
-      "start": 2976,
-      "end": 3063,
+      "start": 797,
+      "end": 884,
       "loc": {
         "start": {
-          "line": 109,
+          "line": 38,
           "column": 0
         },
         "end": {
-          "line": 111,
+          "line": 40,
           "column": 3
         }
       }
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * History implementation\n *\n * @typedef {object} History\n *\n * @property {number} length\n * @property {string} action\n * @property {number} index\n * @property {Array<RouteLocation>} entries\n * @property {function} createHref\n * @property {function(path: string, data: object)} push\n * @property {function(path: string)} silencePush\n * @property {function(path: string, data: object)} replace\n * @property {function} rollback\n * @property {function(index: number)} go\n * @property {function} clear\n * @property {function} goBack\n * @property {function} goForward\n * @property {function(index: number):boolean} canGo\n * @property {function(fn: RouterBlockHandler):function} block\n * @property {function(fn: HistoryListener):function} listen\n *\n ",
-      "start": 3064,
-      "end": 3814,
+      "value": "*\n * History implementation\n *\n * @typedef {object} History\n *\n * @property {number} length Length of the history stack\n * @property {string} action Last action\n * @property {number} index Current active index of the history\n * @property {Array<RouteLocation>} entries\n * @property {function} createHref Creates an appropriate url given data\n * @property {function(path: string, data: object)} push Pushes a new entry\n * @property {function(path: string, data: object)} replace Replaces specified history entry with a desired one\n * @property {function} rollback Rollback last entry\n * @property {function(index: number)} go Jumps to desired history entry by index\n * @property {function} clear Clears all history\n * @property {function} goBack Jumps to previous entry\n * @property {function} goForward Jumps to next entry\n * @property {function(index: number):boolean} canGo Checks if history goes back or not\n * @property {function(fn: RouterBlockHandler):function} block Blocks history changes to ask user or run an another process then resume or break it.\n * @property {function(fn: HistoryListener):function} listen Adds event-handlers to listen history changes.\n *\n ",
+      "start": 885,
+      "end": 2061,
       "loc": {
         "start": {
-          "line": 112,
+          "line": 41,
           "column": 0
         },
         "end": {
-          "line": 134,
+          "line": 62,
           "column": 3
         }
       }
@@ -1009,15 +577,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 3815,
-      "end": 3815,
+      "start": 2062,
+      "end": 2062,
       "loc": {
         "start": {
-          "line": 135,
+          "line": 63,
           "column": 0
         },
         "end": {
-          "line": 135,
+          "line": 63,
           "column": 0
         }
       }
