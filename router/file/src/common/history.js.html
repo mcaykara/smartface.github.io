@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -72,7 +71,7 @@
 &quot;use strict&quot;;
 
 const resolvePathname = require(&quot;resolve-pathname/umd/resolve-pathname&quot;);
-const parsePath = require(&quot;./parseUrl&quot;);
+const parseUrl = require(&quot;./parseUrl&quot;);
 
 const warning = require(&quot;./warning&quot;);
 const createPath = location =&gt; {
@@ -97,7 +96,7 @@ const createLocation = (path, state, key, currentLocation) =&gt; {
   let location;
   if (typeof path === &quot;string&quot;) {
     // Two-arg form: push(path, state)
-    location = parsePath(path);
+    location = parseUrl(path);
     location.state = state;
   } else {
     // One-arg form: push(location)
@@ -105,11 +104,11 @@ const createLocation = (path, state, key, currentLocation) =&gt; {
 
     if (location.pathname === undefined) location.pathname = &quot;&quot;;
 
-    if (location.search) {
-      if (location.search.charAt(0) !== &quot;?&quot;)
-        location.search = &quot;?&quot; + location.search;
+    if (location.query) {
+      if (location.query.charAt(0) !== &quot;?&quot;)
+        location.query = &quot;?&quot; + location.query;
     } else {
-      location.search = &quot;&quot;;
+      location.query = &quot;&quot;;
     }
 
     if (location.hash) {
@@ -167,7 +166,7 @@ const createLocation = (path, state, key, currentLocation) =&gt; {
 const createMemoryHistory = (props = {}) =&gt; {
   const {
     getUserConfirmation,
-    initialEntries = [&quot;/&quot;],
+    initialEntries = [],
     initialIndex = 0,
     keyLength = 6
   } = props;
@@ -220,8 +219,9 @@ const createMemoryHistory = (props = {}) =&gt; {
       ok =&gt; handler(location, ok)
     );
   };
-
+  let lastPath;
   const push = (path, state) =&gt; {
+    lastPath = path;
     warning(
       !(
         typeof path === &quot;object&quot; &amp;&amp;
@@ -329,7 +329,8 @@ const createMemoryHistory = (props = {}) =&gt; {
 
   const goForward = () =&gt; go(1);
   const clear = () =&gt; {
-    history.index = 0;
+    lastPath = null;
+    history.index = -1;
     history.entries = [];
     history.length = 0;
   };
@@ -380,6 +381,8 @@ const createMemoryHistory = (props = {}) =&gt; {
     canGo,
     block,
     listen,
+    dispatchLast: () =&gt;
+      transitionManager.notifyListeners(history.location, history.action),
     confirmTransitionTo
   };
 

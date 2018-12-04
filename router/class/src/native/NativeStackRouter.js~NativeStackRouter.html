@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -74,7 +73,7 @@
   
   
   <span data-ice="since">| since 1.0.0</span>
-  <span data-ice="source">| <span><a href="file/src/native/NativeStackRouter.js.html#lineNumber103">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/native/NativeStackRouter.js.html#lineNumber104">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -145,15 +144,15 @@ var router = Router.of({
 <div class="example-doc" data-ice="exampleDoc">
       
       <pre class="prettyprint source-code"><code data-ice="exampleCode">const extend = require(&quot;js-base/core/extend&quot;);
- const System = require(&quot;sf-core/device/system&quot;);
- const Application = require(&quot;sf-core/application&quot;);
- const AlertView = require(&quot;sf-core/ui/alertview&quot;);
- const {NativeStackRouter} = require(&apos;@smartface/router&apos;);
+const System = require(&quot;sf-core/device/system&quot;);
+const Application = require(&quot;sf-core/application&quot;);
+const AlertView = require(&quot;sf-core/ui/alertview&quot;);
+const {NativeStackRouter} = require(&apos;@smartface/router&apos;);
 
- // Get generated UI code
- const Page1Design = require(&quot;ui/ui_page1&quot;);
+// Get generated UI code
+const Page1Design = require(&quot;ui/ui_page1&quot;);
 
- const Page1 = extend(Page1Design)(
+const Page1 = extend(Page1Design)(
   // Constructor
   function(_super, data, router) {
       // Initalizes super class for this page scope
@@ -298,7 +297,7 @@ var router = Router.of({
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-dispose">dispose</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-routeWillEnter">routeWillEnter</a></span></span><span class="code" data-ice="signature">(route: <span>*</span>, requestedUrl: <span>*</span>, act: <span>*</span>, ex: <span>*</span>, target: <span>*</span>, fromRouter: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -344,41 +343,6 @@ var router = Router.of({
 </tbody>
 </table>
 <table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3">Protected Methods</td></tr></thead>
-  <tbody>
-  
-  <tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">protected</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-onRouterExit">onRouterExit</a></span></span><span class="code" data-ice="signature">(action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Event handler when a router exits from active state</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-</tbody>
-</table>
-<table class="summary" data-ice="summary">
   <thead><tr><td data-ice="title" colspan="3">Private Methods</td></tr></thead>
   <tbody>
   
@@ -402,7 +366,8 @@ var router = Router.of({
       <div>
         
         
-        
+        <div data-ice="description"><p>To Listen page changes are handled by device.</p>
+</div>
       </div>
     </td>
     <td>
@@ -431,7 +396,7 @@ var router = Router.of({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber110">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber111">source</a></span></span>
     </span>
   </h3>
 
@@ -506,7 +471,7 @@ var router = Router.of({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber119">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber120">source</a></span></span>
     </span>
   </h3>
 
@@ -568,7 +533,7 @@ var router = Router.of({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber167">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber172">source</a></span></span>
     </span>
   </h3>
 
@@ -616,18 +581,18 @@ var router = Router.of({
 <div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-dispose">
+  <h3 data-ice="anchor" id="instance-method-routeWillEnter">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">dispose</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">routeWillEnter</span><span class="code" data-ice="signature">(route: <span>*</span>, requestedUrl: <span>*</span>, act: <span>*</span>, ex: <span>*</span>, target: <span>*</span>, fromRouter: <span>*</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber210">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber240">source</a></span></span>
     </span>
   </h3>
 
@@ -638,7 +603,53 @@ var router = Router.of({
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">route</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">requestedUrl</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">act</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">ex</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">target</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">fromRouter</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -670,7 +681,7 @@ var router = Router.of({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber158">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber163">source</a></span></span>
     </span>
   </h3>
 
@@ -718,68 +729,6 @@ var router = Router.of({
   
   
 </div>
-<h2 data-ice="title">Protected Methods</h2>
-
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-onRouterExit">
-    <span class="access" data-ice="access">protected</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">onRouterExit</span><span class="code" data-ice="signature">(action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber252">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Event handler when a router exits from active state</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">action</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
 <h2 data-ice="title">Private Methods</h2>
 
 <div class="detail" data-ice="detail">
@@ -794,14 +743,15 @@ var router = Router.of({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber180">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/native/NativeStackRouter.js.html#lineNumber191">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>To Listen page changes are handled by device.</p>
+</div>
 
   
 

@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -74,7 +73,7 @@
   
   
   <span data-ice="since">| since 1.0.0</span>
-  <span data-ice="source">| <span><a href="file/src/router/Router.js.html#lineNumber133">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/router/Router.js.html#lineNumber189">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -195,6 +194,40 @@
   ]
 });</code></pre>
     </div>
+<div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">// Homeroute setting
+
+...
+     StackRouter.of({
+          path: &quot;/stack&quot;,
+          to: &quot;/stack/path1&quot;,
+          homeRoute: 0, // it&apos;s first push if target is path diffrent.
+          headerBarParams: () =&gt; { ios: { translucent: true } },
+          routes: [
+              Route.of({
+                  path: &quot;/stack/path1&quot;,
+                  build: (match, state, router) =&gt; new Page1(state.data, router)
+              }),
+              Route.of({
+                  path: &quot;/stack/path2&quot;,
+                  routeShouldMatch: (route, nextState) =&gt; {
+                      console.log(&apos;routeShouldMatch&apos;);
+                      if (!nextState.routeData.applied) {
+                          // blocks route changing
+                          return false;
+                      }
+                      return false;
+                  },
+                  build: (router, route) =&gt; {
+                      const { routeData, view } = route.getState();
+                      return new Page2(routeData, router);
+                  }
+              })
+          ]
+      })
+...</code></pre>
+    </div>
 </div>
 
   
@@ -279,6 +312,35 @@
   <tbody>
   
   <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">private</span>
+      
+      <span class="kind" data-ice="kind">get</span>
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-get-__is_router">__is_router</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Fast router&apos;s instance checking</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      <span class="since" data-ice="since">since 1.0.0</span>
+    </td>
+  </tr>
+<tr data-ice="target">
     <td>
       <span class="access" data-ice="access">private</span>
       
@@ -391,7 +453,7 @@
       <div>
         
         
-        <div data-ice="description"><p>Return current url</p>
+        <div data-ice="description"><p>Return current active url</p>
 </div>
       </div>
     </td>
@@ -472,42 +534,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-goBack">goBack</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-goBack">goBack</a></span></span><span class="code" data-ice="signature">(url: <span>string </span> | <span> RouteLocation</span>): <span><a href="class/src/router/Router.js~Router.html">Router</a></span></span>
         </p>
       </div>
       <div>
         
         
         <div data-ice="description"><p>Rewinds the history</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      <span class="since" data-ice="since">since 1.0.0</span>
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-goForward">goForward</a></span></span><span class="code" data-ice="signature">()</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Forwards history</p>
 </div>
       </div>
     </td>
@@ -600,7 +633,7 @@
     </td>
     <td>
       
-      
+      <span class="since" data-ice="since">since 1.0.0</span>
     </td>
   </tr>
 <tr data-ice="target">
@@ -652,7 +685,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(parentHistory: <span><a href="typedef/index.html#static-typedef-HistoryListener">HistoryListener</a></span>, onHistoryChange: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(parentHistory: <span><a href="typedef/index.html#static-typedef-HistoryListener">HistoryListener</a></span>, onHistoryChange: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, pushHomes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
         </p>
       </div>
       <div>
@@ -681,7 +714,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-onHistoryChange">onHistoryChange</a></span></span><span class="code" data-ice="signature">(location: <span><a href="typedef/index.html#static-typedef-RouteLocation">RouteLocation</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, target: <span><a href="class/src/router/Router.js~Router.html">Router</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-onHistoryChange">onHistoryChange</a></span></span><span class="code" data-ice="signature">(location: <span><a href="typedef/index.html#static-typedef-RouteLocation">RouteLocation</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="class/src/router/Router.js~Router.html">Router</a></span>, fromRouter: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>)</span>
         </p>
       </div>
       <div>
@@ -745,7 +778,7 @@
       <div>
         
         
-        <div data-ice="description"><p>Redirects route and removes last route record from history</p>
+        <div data-ice="description"><p>Redirects route and removes last route record from history.</p>
 </div>
       </div>
     </td>
@@ -768,7 +801,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-renderMatches">renderMatches</a></span></span><span class="code" data-ice="signature">(matches: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span><{isexact: <span=""><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>, params: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, url: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>}&gt;, location: <span><a href="typedef/index.html#static-typedef-RouteLocation">RouteLocation</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="class/src/router/Router.js~Router.html">Router</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></{isexact:></span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-renderMatches">renderMatches</a></span></span><span class="code" data-ice="signature">(matches: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span><{isexact: <span=""><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>, params: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, url: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>}&gt;, location: <span><a href="typedef/index.html#static-typedef-RouteLocation">RouteLocation</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="class/src/router/Router.js~Router.html">Router</a></span>, fromRouter: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></{isexact:></span>
         </p>
       </div>
       <div>
@@ -832,7 +865,7 @@
       <div>
         
         
-        <div data-ice="description"><p>Route is matched handler</p>
+        <div data-ice="description"><p>Route is matched handler.</p>
 </div>
       </div>
     </td>
@@ -861,7 +894,7 @@
       <div>
         
         
-        <div data-ice="description"><p>Life-cycle event handler handles Router is activated</p>
+        <div data-ice="description"><p>Life-cycle event handler handles when Router is activated</p>
 </div>
       </div>
     </td>
@@ -950,7 +983,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#static-method-of">of</a></span></span><span class="code" data-ice="signature">(params: <span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span>): <span><a href="class/src/router/Route.js~Route.html">Route</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#static-method-of">of</a></span></span><span class="code" data-ice="signature">(params: <span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span>, state: <span><a href="typedef/index.html#static-typedef-RouteState">RouteState</a></span>): <span><a href="class/src/router/Route.js~Route.html">Route</a></span></span>
         </p>
       </div>
       <div>
@@ -1188,13 +1221,41 @@ There are some exceptions:</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-method-matchPath">matchPath</a></span></span><span class="code" data-ice="signature">(url: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>Match</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-method-isModal">isModal</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Queries if specified url match to the route path</p>
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-method-matchPath">matchPath</a></span></span><span class="code" data-ice="signature">(url: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="typedef/index.html#static-typedef-RouteMatch">RouteMatch</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Checks if the specified url match to the route path</p>
 </div>
       </div>
     </td>
@@ -1304,7 +1365,7 @@ There are some exceptions:</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-method-toObject">toObject</a></span></span><span class="code" data-ice="signature">(): {path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&gt;}</span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-method-toJSON">toJSON</a></span></span><span class="code" data-ice="signature">(): {path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&gt;}</span>
         </p>
       </div>
       <div>
@@ -1396,7 +1457,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber146">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber209">source</a></span></span>
     </span>
   </h3>
 
@@ -1471,7 +1532,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber160">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber223">source</a></span></span>
     </span>
   </h3>
 
@@ -1522,6 +1583,62 @@ There are some exceptions:</p>
 <div data-ice="memberDetails"><h2 data-ice="title">Private Members</h2>
 
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-get-__is_router">
+    <span class="access" data-ice="access">private</span>
+    
+    <span class="kind" data-ice="kind">get</span>
+    
+    
+    
+    <span class="code" data-ice="name">__is_router</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="right-info">
+      
+      <span class="since" data-ice="since">since 1.0.0</span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber333">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Fast router&apos;s instance checking</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-member-_historyController">
     <span class="access" data-ice="access">private</span>
     
@@ -1533,7 +1650,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber215">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber300">source</a></span></span>
     </span>
   </h3>
 
@@ -1579,7 +1696,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber303">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber400">source</a></span></span>
     </span>
   </h3>
 
@@ -1679,7 +1796,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber690">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber872">source</a></span></span>
     </span>
   </h3>
 
@@ -1723,14 +1840,14 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber254">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber351">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Return current url</p>
+  <div data-ice="description"><p>Return current active url</p>
 </div>
 
   
@@ -1779,7 +1896,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber639">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber818">source</a></span></span>
     </span>
   </h3>
 
@@ -1835,7 +1952,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber629">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber808">source</a></span></span>
     </span>
   </h3>
 
@@ -1887,11 +2004,11 @@ alert({
     
     
     
-    <span class="code" data-ice="name">goBack</span><span class="code" data-ice="signature">(): <span>*</span></span>
+    <span class="code" data-ice="name">goBack</span><span class="code" data-ice="signature">(url: <span>string </span> | <span> RouteLocation</span>): <span><a href="class/src/router/Router.js~Router.html">Router</a></span></span>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber611">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber777">source</a></span></span>
     </span>
   </h3>
 
@@ -1903,7 +2020,24 @@ alert({
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">url</td>
+      <td data-ice="type" class="code"><span>string </span> | <span> RouteLocation</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>This routes an experimental feature. If you use this feature you should use for same StackRouter stack.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   <div class="return-params" data-ice="returnParams">
@@ -1911,7 +2045,7 @@ alert({
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/router/Router.js~Router.html">Router</a></span></td>
           
         </tr>
       </tbody>
@@ -1919,50 +2053,6 @@ alert({
     <div data-ice="returnProperties">
 </div>
   </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-goForward">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">goForward</span><span class="code" data-ice="signature">()</span>
-    <span class="right-info">
-      
-      <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber647">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Forwards history</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
 
   
 
@@ -1991,7 +2081,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber268">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber365">source</a></span></span>
     </span>
   </h3>
 
@@ -2050,7 +2140,7 @@ alert({
   <div class="example-doc" data-ice="exampleDoc">
       
       <pre class="prettyprint source-code"><code data-ice="exampleCode">const unlisten = router.listen((location, action) =&gt; {
-    console.log(` ---- new route location: ${location.pathname} action : ${action}`);
+    console.log(`new route location: ${location.pathname} action : ${action}`);
 });</code></pre>
     </div>
 </div>
@@ -2072,7 +2162,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber682">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber864">source</a></span></span>
     </span>
   </h3>
 
@@ -2143,8 +2233,8 @@ alert({
     <span class="code" data-ice="name">push</span><span class="code" data-ice="signature">(path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routeData: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/router/Router.js~Router.html">Router</a></span></span>
     <span class="right-info">
       
-      
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber577">source</a></span></span>
+      <span class="since" data-ice="since">since 1.0.0</span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber714">source</a></span></span>
     </span>
   </h3>
 
@@ -2226,7 +2316,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber499">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber633">source</a></span></span>
     </span>
   </h3>
 
@@ -2310,11 +2400,11 @@ Router.of({
     
     
     
-    <span class="code" data-ice="name">initialize</span><span class="code" data-ice="signature">(parentHistory: <span><a href="typedef/index.html#static-typedef-HistoryListener">HistoryListener</a></span>, onHistoryChange: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
+    <span class="code" data-ice="name">initialize</span><span class="code" data-ice="signature">(parentHistory: <span><a href="typedef/index.html#static-typedef-HistoryListener">HistoryListener</a></span>, onHistoryChange: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, pushHomes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber213">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber297">source</a></span></span>
     </span>
   </h3>
 
@@ -2347,6 +2437,13 @@ Router.of({
       <td data-ice="description"><p>Root onHistoryChange handler</p>
 </td>
     </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">pushHomes</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>It uses in order to push routers&apos; home-route</p>
+</td>
+    </tr>
 </tbody>
   </table>
 </div>
@@ -2377,18 +2474,19 @@ Router.of({
     
     
     
-    <span class="code" data-ice="name">onHistoryChange</span><span class="code" data-ice="signature">(location: <span><a href="typedef/index.html#static-typedef-RouteLocation">RouteLocation</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, target: <span><a href="class/src/router/Router.js~Router.html">Router</a></span>)</span>
+    <span class="code" data-ice="name">onHistoryChange</span><span class="code" data-ice="signature">(location: <span><a href="typedef/index.html#static-typedef-RouteLocation">RouteLocation</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="class/src/router/Router.js~Router.html">Router</a></span>, fromRouter: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>)</span>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber320">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber423">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Handles history changes. Just Root router, because routing flow mmust be always root to children,
+  <div data-ice="description"><p>Handles history changes. Just Root router,
+because routing flow mmust be always root to children,
 in order to change display logic all the time.</p>
 </div>
 
@@ -2410,7 +2508,7 @@ in order to change display logic all the time.</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">action</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2420,6 +2518,13 @@ in order to change display logic all the time.</p>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>Target Router which pushed to its router.</p>
 </td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">fromRouter</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: true</li></ul></td>
+      <td data-ice="description"></td>
     </tr>
 </tbody>
   </table>
@@ -2455,7 +2560,7 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber564">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber698">source</a></span></span>
     </span>
   </h3>
 
@@ -2515,14 +2620,14 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber511">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber645">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Redirects route and removes last route record from history</p>
+  <div data-ice="description"><p>Redirects route and removes last route record from history.</p>
 </div>
 
   
@@ -2583,11 +2688,11 @@ in order to change display logic all the time.</p>
     
     
     
-    <span class="code" data-ice="name">renderMatches</span><span class="code" data-ice="signature">(matches: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span><{isexact: <span=""><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>, params: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, url: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>}&gt;, location: <span><a href="typedef/index.html#static-typedef-RouteLocation">RouteLocation</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="class/src/router/Router.js~Router.html">Router</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></{isexact:></span>
+    <span class="code" data-ice="name">renderMatches</span><span class="code" data-ice="signature">(matches: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span><{isexact: <span=""><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>, params: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, url: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>}&gt;, location: <span><a href="typedef/index.html#static-typedef-RouteLocation">RouteLocation</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="class/src/router/Router.js~Router.html">Router</a></span>, fromRouter: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></{isexact:></span>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber347">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber457">source</a></span></span>
     </span>
   </h3>
 
@@ -2633,6 +2738,13 @@ in order to change display logic all the time.</p>
       <td data-ice="type" class="code"><span><a href="class/src/router/Router.js~Router.html">Router</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>Target Router which pushed to its router.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">fromRouter</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>If the specified request if from the router or an another source.</p>
 </td>
     </tr>
 </tbody>
@@ -2693,7 +2805,7 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber550">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber684">source</a></span></span>
     </span>
   </h3>
 
@@ -2776,14 +2888,14 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber534">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber668">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Route is matched handler</p>
+  <div data-ice="description"><p>Route is matched handler.</p>
 </div>
 
   
@@ -2836,14 +2948,14 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber464">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber598">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Life-cycle event handler handles Router is activated</p>
+  <div data-ice="description"><p>Life-cycle event handler handles when Router is activated</p>
 </div>
 
   
@@ -2920,7 +3032,7 @@ Router.of({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber436">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber570">source</a></span></span>
     </span>
   </h3>
 
@@ -2980,7 +3092,7 @@ Router.of({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber475">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber609">source</a></span></span>
     </span>
   </h3>
 

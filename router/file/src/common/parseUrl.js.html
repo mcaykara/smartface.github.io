@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -69,25 +68,35 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/common/parseUrl.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const parseUrl = path =&gt; {
-  let pathname = path || &quot;/&quot;;
-  let search = &quot;&quot;;
+  let url = path || &quot;/&quot;;
+  let query = &quot;&quot;;
+  let rawQuery = &quot;&quot;;
   let hash = &quot;&quot;;
 
-  const hashIndex = pathname.indexOf(&quot;#&quot;);
+  const hashIndex = url.indexOf(&quot;#&quot;);
   if (hashIndex !== -1) {
-    hash = pathname.substr(hashIndex);
-    pathname = pathname.substr(0, hashIndex);
+    hash = url.substr(hashIndex);
+    url = url.substr(0, hashIndex);
   }
 
-  const searchIndex = pathname.indexOf(&quot;?&quot;);
-  if (searchIndex !== -1) {
-    search = pathname.substr(searchIndex);
-    pathname = pathname.substr(0, searchIndex);
+  const queryIndex = url.indexOf(&quot;?&quot;);
+  if (queryIndex !== -1) {
+    rawQuery = url.substr(queryIndex);
+    query =
+      &quot;{&quot; +
+      rawQuery
+        .replace(&quot;?&quot;, &apos;&quot;&apos;)
+        .replace(/\&amp;/gi, &apos;&quot;,&quot;&apos;)
+        .replace(/\=/gi, &apos;&quot;:&quot;&apos;) +
+      &apos;&quot;}&apos;;
+    query = JSON.parse(query);
+    url = url.substr(0, queryIndex);
   }
 
   return {
-    pathname,
-    search: search === &quot;?&quot; ? &quot;&quot; : search,
+    query,
+    pathname: url,
+    rawQuery: rawQuery === &quot;?&quot; ? &quot;&quot; : rawQuery,
     hash: hash === &quot;#&quot; ? &quot;&quot; : hash
   };
 };

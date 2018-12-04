@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -71,25 +70,24 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&quot;use strict&quot;;
 const createMemoryHistory = require(&quot;./history&quot;);
 const { matchUrl } = require(&quot;./matchPath&quot;);
+let rootHistory;
 
 /**
  * Creates a new HistoryController instance
- * 
+ *
  * @param {{?initialEntries: Array, ?initialIndex: number, ?keyLength: number, ?getUserConfirmation: function, sensitive: boolean, strict: boolean}} param0
  * @return {HistoryController}
  */
-function createHistory(
-  {
-    initialEntries = null,
-    initialIndex = null,
-    keyLength = null,
-    getUserConfirmation = null,
-    exact = false,
-    sensitive = true,
-    strict = false,
-    path
-  } = {}
-) {
+function createHistory({
+  initialEntries = null,
+  initialIndex = null,
+  keyLength = null,
+  getUserConfirmation = null,
+  exact = false,
+  sensitive = true,
+  strict = false,
+  path
+} = {}) {
   let routeBlocker = (blockerFn, callback) =&gt; {
     // console.log(`--- routeBlocker ${blockerFn} ${_preventDefault}`);
     _preventDefault === false &amp;&amp; getUserConfirmation
@@ -162,6 +160,10 @@ function createHistory(
       };
     }
 
+    clear() {
+      _history.clear();
+    }
+
     getHistoryasArray() {
       return _history.entries.map(item =&gt; item.pathname);
     }
@@ -175,10 +177,13 @@ function createHistory(
       _nodes.add(node);
       // bubbles history goback to root if go back could be possible.
       node.onGoBack = () =&gt; {
-        if (_history.length &gt; 0) {
+        // console.log(`on go back ${JSON.stringify(this.getHistoryasArray())} ${_history.index}`);
+        if (_history.canGo(-1)) {
           // _listeners.forEach(listener =&gt; listener(_history.location, &apos;POP&apos;))
           _history.go(-1);
-        } else this.onGoBack &amp;&amp; this.onGoBack();
+        } else {
+          this.onGoBack &amp;&amp; this.onGoBack();
+        }
       };
       // bubbles history push to root if push could be possible.
       node.onPush = (path, data) =&gt; {
@@ -190,6 +195,10 @@ function createHistory(
       };
 
       return node;
+    }
+
+    get lastLocation() {
+      return _history.location;
     }
 
     /**
@@ -205,6 +214,10 @@ function createHistory(
      */
     get history() {
       return _history;
+    }
+
+    pushLocation(location) {
+      _history.push(location);
     }
 
     /**
@@ -263,7 +276,7 @@ function createHistory(
      * Calls History.goBack
      */
     goBack() {
-      this.canGoBack()
+      _history.canGo(-1)
         ? _history.goBack()
         : !_preventDefault &amp;&amp; this.onGoBack &amp;&amp; this.onGoBack();
       _preventDefault &amp;&amp; this.clearPreventDefault();
@@ -280,7 +293,8 @@ function createHistory(
 
       _listeners.add(fn);
       const wrapper = (location, action) =&gt; {
-        !_preventDefault &amp;&amp; fn(location, action);
+        !_preventDefault &amp;&amp;
+          fn(location, action, _history.entries[_history.index]);
       };
       unlisten.add(_history.listen(wrapper));
       unlisten.forEach(item =&gt; _unlistenAll.add(item));
@@ -299,7 +313,11 @@ function createHistory(
      * @return {string}
      */
     toString() {
-      return &quot;[Object HistoryController]&quot;;
+      return `[Object HistoryController, stack: ${JSON.stringify(
+        this.getHistoryasArray()
+      )},
+        length ${_history.length}, 
+        index : ${_history.index}]`;
     }
 
     /**

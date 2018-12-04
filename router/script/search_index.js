@@ -18,12 +18,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@smartface/router/src/native/nativemodalrouter.js~nativemodalrouter",
-    "class/src/native/NativeModalRouter.js~NativeModalRouter.html",
-    "<span>NativeModalRouter</span> <span class=\"search-result-import-path\">@smartface/router/src/native/NativeModalRouter.js</span>",
-    "class"
-  ],
-  [
     "@smartface/router/src/native/nativerouter.js~nativerouter",
     "class/src/native/NativeRouter.js~NativeRouter.html",
     "<span>NativeRouter</span> <span class=\"search-result-import-path\">@smartface/router/src/native/NativeRouter.js</span>",
@@ -133,61 +127,79 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/matchRoutes.test.js.html#lineNumber4",
+    "test-file/__test__/matchRoutes.test.js.html#lineNumber8",
     "Match Routes",
     "test"
   ],
   [
     "",
-    "test-file/__test__/matchRoutes.test.js.html#lineNumber5",
+    "test-file/__test__/matchRoutes.test.js.html#lineNumber43",
     "Match Routes can match with param",
     "test"
   ],
   [
     "",
-    "test-file/__test__/matchRoutes.test.js.html#lineNumber41",
+    "test-file/__test__/matchRoutes.test.js.html#lineNumber76",
     "Match Routes gets routes if parameter is just numeric",
     "test"
   ],
   [
     "",
-    "test-file/__test__/matchRoutes.test.js.html#lineNumber98",
+    "test-file/__test__/matchRoutes.test.js.html#lineNumber129",
     "Match Routes mathes routes if parameter is alphanumeric",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Route.test.js.html#lineNumber4",
-    "Route",
+    "test-file/__test__/matchRoutes.test.js.html#lineNumber9",
+    "Match Routes should match same url with query",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Route.test.js.html#lineNumber18",
-    "Route can match with valid url",
-    "test"
-  ],
-  [
-    "",
-    "test-file/__test__/Route.test.js.html#lineNumber46",
-    "Route can run nested build methods",
-    "test"
-  ],
-  [
-    "",
-    "test-file/__test__/Route.test.js.html#lineNumber60",
-    "Route can't match with invalid url",
+    "test-file/__test__/matchRoutes.test.js.html#lineNumber30",
+    "Match Routes should parse same url with query",
     "test"
   ],
   [
     "",
     "test-file/__test__/Route.test.js.html#lineNumber5",
+    "Route",
+    "test"
+  ],
+  [
+    "",
+    "test-file/__test__/Route.test.js.html#lineNumber6",
+    "Route can be matched any url",
+    "test"
+  ],
+  [
+    "",
+    "test-file/__test__/Route.test.js.html#lineNumber32",
+    "Route can match with valid url",
+    "test"
+  ],
+  [
+    "",
+    "test-file/__test__/Route.test.js.html#lineNumber60",
+    "Route can run nested build methods",
+    "test"
+  ],
+  [
+    "",
+    "test-file/__test__/Route.test.js.html#lineNumber74",
+    "Route can't match with invalid url",
+    "test"
+  ],
+  [
+    "",
+    "test-file/__test__/Route.test.js.html#lineNumber19",
     "Route has a path",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Route.test.js.html#lineNumber11",
+    "test-file/__test__/Route.test.js.html#lineNumber25",
     "Route has a target",
     "test"
   ],
@@ -199,37 +211,43 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber436",
+    "test-file/__test__/Router.test.js.html#lineNumber513",
     "Router calls back to parent if its history is empty",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber544",
+    "test-file/__test__/Router.test.js.html#lineNumber626",
     "Router can be blocked",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber485",
+    "test-file/__test__/Router.test.js.html#lineNumber567",
     "Router can call a relative path",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber617",
+    "test-file/__test__/Router.test.js.html#lineNumber699",
     "Router can call child Routers",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber585",
+    "test-file/__test__/Router.test.js.html#lineNumber462",
+    "Router can get back in its history",
+    "test"
+  ],
+  [
+    "",
+    "test-file/__test__/Router.test.js.html#lineNumber667",
     "Router can redirect to specified route with route-data when route has 'to' attribute",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber275",
+    "test-file/__test__/Router.test.js.html#lineNumber265",
     "Router finds target by url",
     "test"
   ],
@@ -241,25 +259,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber390",
-    "Router gets history back",
-    "test"
-  ],
-  [
-    "",
     "test-file/__test__/Router.test.js.html#lineNumber9",
     "Router has routes",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber332",
+    "test-file/__test__/Router.test.js.html#lineNumber404",
     "Router return only root path if any route doesn't be matched",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber364",
+    "test-file/__test__/Router.test.js.html#lineNumber436",
     "Router sends data and params to specified route",
     "test"
   ],
@@ -277,7 +289,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber678",
+    "test-file/__test__/Router.test.js.html#lineNumber760",
     "Router should be routed from child Routers",
     "test"
   ],
@@ -606,12 +618,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/common/routestore.js",
-    "file/src/common/RouteStore.js.html",
-    "src/common/RouteStore.js",
-    "file"
-  ],
-  [
     "src/common/createhistory.js",
     "file/src/common/createHistory.js.html",
     "src/common/createHistory.js",
@@ -750,12 +756,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/native/bottomtabbarrouter.js~bottomtabbarrouter#routewillenter",
-    "class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html#instance-method-routeWillEnter",
-    "src/native/BottomTabBarRouter.js~BottomTabBarRouter#routeWillEnter",
-    "method"
-  ],
-  [
     "src/native/bottomtabbarrouter.js~bottomtabbarrouter#setvisited",
     "class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html#instance-method-setVisited",
     "src/native/BottomTabBarRouter.js~BottomTabBarRouter#setVisited",
@@ -852,46 +852,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/native/nativemodalrouter.js",
-    "file/src/native/NativeModalRouter.js.html",
-    "src/native/NativeModalRouter.js",
-    "file"
-  ],
-  [
-    "src/native/nativemodalrouter.js~nativemodalrouter#addchildrouter",
-    "class/src/native/NativeModalRouter.js~NativeModalRouter.html#instance-method-addChildRouter",
-    "src/native/NativeModalRouter.js~NativeModalRouter#addChildRouter",
-    "method"
-  ],
-  [
-    "src/native/nativemodalrouter.js~nativemodalrouter#constructor",
-    "class/src/native/NativeModalRouter.js~NativeModalRouter.html#instance-constructor-constructor",
-    "src/native/NativeModalRouter.js~NativeModalRouter#constructor",
-    "method"
-  ],
-  [
-    "src/native/nativemodalrouter.js~nativemodalrouter#routewillenter",
-    "class/src/native/NativeModalRouter.js~NativeModalRouter.html#instance-method-routeWillEnter",
-    "src/native/NativeModalRouter.js~NativeModalRouter#routeWillEnter",
-    "method"
-  ],
-  [
-    "src/native/nativemodalrouter.js~nativemodalrouter.of",
-    "class/src/native/NativeModalRouter.js~NativeModalRouter.html#static-method-of",
-    "src/native/NativeModalRouter.js~NativeModalRouter.of",
-    "method"
-  ],
-  [
     "src/native/nativerouter.js",
     "file/src/native/NativeRouter.js.html",
     "src/native/NativeRouter.js",
     "file"
-  ],
-  [
-    "src/native/nativerouter.js~nativerouter#addchildrouter",
-    "class/src/native/NativeRouter.js~NativeRouter.html#instance-method-addChildRouter",
-    "src/native/NativeRouter.js~NativeRouter#addChildRouter",
-    "method"
   ],
   [
     "src/native/nativerouter.js~nativerouter#constructor",
@@ -942,21 +906,15 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/native/nativestackrouter.js~nativestackrouter#dispose",
-    "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-dispose",
-    "src/native/NativeStackRouter.js~NativeStackRouter#dispose",
-    "method"
-  ],
-  [
     "src/native/nativestackrouter.js~nativestackrouter#headerbar",
     "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-get-headerBar",
     "src/native/NativeStackRouter.js~NativeStackRouter#headerBar",
     "member"
   ],
   [
-    "src/native/nativestackrouter.js~nativestackrouter#onrouterexit",
-    "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-onRouterExit",
-    "src/native/NativeStackRouter.js~NativeStackRouter#onRouterExit",
+    "src/native/nativestackrouter.js~nativestackrouter#routewillenter",
+    "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-routeWillEnter",
+    "src/native/NativeStackRouter.js~NativeStackRouter#routeWillEnter",
     "method"
   ],
   [
@@ -1122,6 +1080,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/router/route.js~route#ismodal",
+    "class/src/router/Route.js~Route.html#instance-method-isModal",
+    "src/router/Route.js~Route#isModal",
+    "method"
+  ],
+  [
     "src/router/route.js~route#matchpath",
     "class/src/router/Route.js~Route.html#instance-method-matchPath",
     "src/router/Route.js~Route#matchPath",
@@ -1158,9 +1122,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/router/route.js~route#toobject",
-    "class/src/router/Route.js~Route.html#instance-method-toObject",
-    "src/router/Route.js~Route#toObject",
+    "src/router/route.js~route#tojson",
+    "class/src/router/Route.js~Route.html#instance-method-toJSON",
+    "src/router/Route.js~Route#toJSON",
     "method"
   ],
   [
@@ -1248,6 +1212,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/router/router.js~router#__is_router",
+    "class/src/router/Router.js~Router.html#instance-get-__is_router",
+    "src/router/Router.js~Router#__is_router",
+    "member"
+  ],
+  [
     "src/router/router.js~router#_historycontroller",
     "class/src/router/Router.js~Router.html#instance-member-_historyController",
     "src/router/Router.js~Router#_historyController",
@@ -1293,12 +1263,6 @@ window.esdocSearchIndex = [
     "src/router/router.js~router#goback",
     "class/src/router/Router.js~Router.html#instance-method-goBack",
     "src/router/Router.js~Router#goBack",
-    "method"
-  ],
-  [
-    "src/router/router.js~router#goforward",
-    "class/src/router/Router.js~Router.html#instance-method-goForward",
-    "src/router/Router.js~Router#goForward",
     "method"
   ],
   [
@@ -1398,6 +1362,12 @@ window.esdocSearchIndex = [
     "typedef"
   ],
   [
+    "src/router/routestore.js",
+    "file/src/router/routeStore.js.html",
+    "src/router/routeStore.js",
+    "file"
+  ],
+  [
     "src/types.js",
     "file/src/types.js.html",
     "src/types.js",
@@ -1468,6 +1438,12 @@ window.esdocSearchIndex = [
     "http://docs.smartface.io/#!/api/UI.TabBarItem",
     "src/types.js~TabBarItem",
     "external"
+  ],
+  [
+    "src/utils/funcorval.js",
+    "file/src/utils/funcorVal.js.html",
+    "src/utils/funcorVal.js",
+    "file"
   ],
   [
     "src/utils/map.js",

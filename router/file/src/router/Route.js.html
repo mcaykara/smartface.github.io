@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -81,17 +80,22 @@
 /**
  * @typedef {object} RouteLocation History entry of a request
  * @property {!string} pathname Requested url
- * @property {?string} search Url&apos;s search data
+ * @property {?string} query Url&apos;s search data
  * @property {?string} hash Url&apos;s hash data
- * @property {?RouteState} state Route state
- * @property {!string} key Unique key
+ * @property {?RouteState} state Requested data to destination route
+ * @property {!string} key Auto generated unique key
  */
 
 /**
  * @typedef {object} RouteParams
  * @property {!string} path Route Path definition
- * @property {?Array&lt;Route&gt;} [=[]] routes Route children
- * @property {?boolean} [=false] exact Points that a route match must be exact or not
+ * @property {?string | ?function(router: Router, route: route)} [to=null] Redirection url
+ * @property {?Array&lt;Route&gt;} [routes=[]] Route children
+ * @property {?function(router: Router, route: Route)} [build=null] Route&apos;s view builder
+ * @property {?Array&lt;Route&gt;} [build=null] Route&apos;s view builder
+ * @property {?boolean} [exact=false]  Points that a route match must be exact or not. If a route is exact then it&apos;s chld routes cannot be received.
+ * @property {?boolean} [sensitive=false] If path matching is case-sensitive or not.
+ * @property {?modal} [modal=false] If route is displayed as modal or not.
  * @property {?function(route: Route, nextState: RouteState)} routeShouldMatch Handles if route is mathed as request url
  * @property {?function(Router: Router, route: Route)} routeDidEnter Handles if route is displayed
  * @property {?function(Router: Router, route: Route)} routeDidExit Handles if route is removed
@@ -99,14 +103,20 @@
 
 /**
  * @typedef {object} RouteState
- * @property {?object} [={}] routeData Requested data by user
+ * @property {?object} [routeData ={}] Requested data by user
  * @property {!string} action Request action &apos;PUSH&apos;, &apos;POP&apos; or &apos;REPLACE&apos;
+ * @property {object} query Request&apos;s query-string
+ * @property {string} rawQuery String version of the request&apos;s query-string
+ * @property {boolean} active If Route is currently displayed or not.
+ * @property {string} hash Request&apos;s url hash comes after &apos;#&apos; char. For example &apos;/path/to#a-hash&apos;
  * @property {!RouteMatch} match Request&apos;s match result
  * @property {!object} view Keeps requested route&apos;s view
- * @property {?object} [={}] routingState Keeps user data when route runs
+ * @property {!string} url Requested url
+ * @property {!string} prevUrl Previously requested url
+ * @property {?object} [routingState={}] Keeps user data when route runs
  */
 
-const matchPath = require(&quot;../common/matchPath&quot;).matchPath;
+const matchUrl = require(&quot;../common/matchPath&quot;).matchUrl;
 const mapComposer = require(&quot;../utils/map&quot;);
 
 /**
@@ -199,28 +209,45 @@ class Route {
    *
    * @since 1.0.0
    * @static
-   * @param {RouteParams} params
+   * @param {RouteParams} params Route properties
+   * @param {RouteState} state Initial state
    * @return {Route}
    */
-  static of(params = {}) {
-    return new Route(params);
+  static of(params = {}, state = {}) {
+    return new Route(params, state);
   }
   /**
    * @constructor
-   * @param {RouteParams} param
+   * @param {RouteParams} param0 Route properties
+   * @param {RouteState} param1 Initial state
    */
-  constructor({
-    path = null,
-    to = null,
-    routes = [],
-    build = null,
-    exact = false,
-    sensitive = true,
-    strict = true,
-    routeShouldMatch = null,
-    routeDidEnter,
-    routeDidExit
-  }) {
+  constructor(
+    {
+      path = null,
+      to = null,
+      routes = [],
+      build = null,
+      exact = false,
+      sensitive = false,
+      strict = false,
+      modal = false,
+      routeShouldMatch = null,
+      routeDidEnter,
+      routeDidExit
+    } = {},
+    {
+      match = {},
+      routeData = {},
+      view = null,
+      routingState = {},
+      action = null,
+      url = null,
+      active = false,
+      query = &quot;&quot;,
+      rawQuery = null,
+      hash = &quot;&quot;
+    } = {}
+  ) {
     this._options = {
       exact,
       path,
@@ -228,6 +255,7 @@ class Route {
       strict
     };
     this._exact = exact;
+    this._isDIrty = false;
     this._strict = false;
     this._build = build;
     this._path = path instanceof RoutePath ? path : new RoutePath(path);
@@ -237,13 +265,27 @@ class Route {
     this._routeShouldMatch = routeShouldMatch;
     this._routeDidEnter = routeDidEnter;
     this._routeDidExit = routeDidExit;
+    this._modal = modal;
     this._state = Object.seal({
-      match: {},
-      routeData: {},
-      view: null,
-      routingState: {},
-      action: null
+      match,
+      query,
+      rawQuery,
+      hash,
+      routeData,
+      view,
+      routingState,
+      action,
+      url,
+      active,
+      prevUrl: null
     });
+  }
+
+  /**
+   *
+   */
+  isModal() {
+    return this._modal;
   }
 
   /**
@@ -266,27 +308,34 @@ class Route {
     return this._state;
   }
 
-  toJSON() {
-    return {
-      type: &quot;route&quot;,
-      exac: this._exact,
-      strict: this._strict,
-      sensitive: this._sensitive,
-      path: this._path,
-      state: { match: this._state.match }
-    };
-  }
-
   /**
    * Simple Object representation of the route
    *
    * @since 1.0.0
    * @return {{path: string, routes: Array&lt;object&gt;}}
    */
-  toObject() {
+  toJSON() {
+    // const {
+    //   match,
+    //   routeData,
+    //   routingState,
+    //   action,
+    //   url,
+    //   view,
+    //   active,
+    //   prevUrl
+    // } = this._state;
     return {
+      type: &quot;route&quot;,
+      match: this._state.routeData,
+      routeData: this._state.routeData,
+      routingState: this._state.routingState,
       path: this._path.getPath(),
-      routes: this._routes.map(route =&gt; route.toObject())
+      routes: this._routes.slice(),
+      state: Object.assign({}, this._state, {
+        view:
+          (this._state.view &amp;&amp; this._state.view.constructor.name) || undefined
+      })
     };
   }
 
@@ -297,7 +346,27 @@ class Route {
    * @return {string}
    */
   toString() {
-    return `[object ${this.constructor.name}, path: ${this.getUrlPath()}]`;
+    return `[object ${
+      this.constructor.name
+    }, path: ${this.getUrlPath()}, url: ${this._state.url}]`;
+  }
+
+  setUrl(url) {
+    if (!url) throw new TypeError(`[${this}] Route url cannot be empty`);
+    this.setState({ url, prevUrl: this._state.url });
+    this._isDIrty = true;
+  }
+
+  clearUrl() {
+    this.setState({ url: &quot;&quot;, prevUrl: this._state.url });
+  }
+
+  clearDirty() {
+    this._isDIrty = false;
+  }
+
+  getUrl() {
+    return this._state.url;
   }
 
   /**
@@ -412,18 +481,12 @@ class Route {
   }
 
   /**
-   * Queries if specified url match to the route path
+   * Checks if the specified url match to the route path
    * @param {string} url
-   * @returns {Match}
+   * @return {RouteMatch}
    */
   matchPath(url) {
-    this._match = matchPath(url, {
-      path: this._path.getPath(),
-      exact: this._exact,
-      strict: this._strict
-    });
-
-    return this._match;
+    return matchUrl(url, this._options);
   }
 
   /**
@@ -452,15 +515,35 @@ class Route {
    * @ignore
    * @returns {Route}
    */
-  clone() {
-    return Route.of({
-      path: this._path,
-      routes: this._routes.slice(),
-      props: Object.assign({}, this._props),
-      build: this._build,
-      exact: this._exact,
-      strict: this._strict
-    });
+  clone(state = {}) {
+    return Route.of(
+      {
+        to: this._to,
+        modal: this._modal,
+        routeDidExit: this._routeDidExit,
+        routeShouldMatch: this._routeShouldMatch,
+        routeDidEnter: this._routeDidEnter,
+        exact: this._exact,
+        strict: this._strict,
+        path: this._path.clone(),
+        path: this._path,
+        props: Object.assign({}, this._props),
+        build: this._build
+      },
+      Object.assign(
+        {
+          hash: this._state.hash,
+          query: this._state.query,
+          rawQuery: this._state.rawQuery,
+          action: this._state.action,
+          active: this._state.active,
+          url: this._state.url,
+          view: this._state.view,
+          query: this._state.query
+        },
+        state
+      )
+    );
   }
 }
 

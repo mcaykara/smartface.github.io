@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -74,7 +73,7 @@
   
   
   <span data-ice="since">| since 1.0.0</span>
-  <span data-ice="source">| <span><a href="file/src/router/Route.js.html#lineNumber126">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/router/Route.js.html#lineNumber137">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -126,7 +125,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#static-method-of">of</a></span></span><span class="code" data-ice="signature">(params: <span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span>): <span><a href="class/src/router/Route.js~Route.html">Route</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#static-method-of">of</a></span></span><span class="code" data-ice="signature">(params: <span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span>, state: <span><a href="typedef/index.html#static-typedef-RouteState">RouteState</a></span>): <span><a href="class/src/router/Route.js~Route.html">Route</a></span></span>
         </p>
       </div>
       <div>
@@ -162,7 +161,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(param: <span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(param0: <span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span>, param1: <span><a href="typedef/index.html#static-typedef-RouteState">RouteState</a></span>)</span>
         </p>
       </div>
       <div>
@@ -413,13 +412,41 @@ There are some exceptions:</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-method-matchPath">matchPath</a></span></span><span class="code" data-ice="signature">(url: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>Match</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-method-isModal">isModal</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Queries if specified url match to the route path</p>
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-method-matchPath">matchPath</a></span></span><span class="code" data-ice="signature">(url: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="typedef/index.html#static-typedef-RouteMatch">RouteMatch</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Checks if the specified url match to the route path</p>
 </div>
       </div>
     </td>
@@ -529,7 +556,7 @@ There are some exceptions:</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-method-toObject">toObject</a></span></span><span class="code" data-ice="signature">(): {path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&gt;}</span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Route.js~Route.html#instance-method-toJSON">toJSON</a></span></span><span class="code" data-ice="signature">(): {path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&gt;}</span>
         </p>
       </div>
       <div>
@@ -625,11 +652,11 @@ There are some exceptions:</p>
     
     
     
-    <span class="code" data-ice="name">of</span><span class="code" data-ice="signature">(params: <span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span>): <span><a href="class/src/router/Route.js~Route.html">Route</a></span></span>
+    <span class="code" data-ice="name">of</span><span class="code" data-ice="signature">(params: <span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span>, state: <span><a href="typedef/index.html#static-typedef-RouteState">RouteState</a></span>): <span><a href="class/src/router/Route.js~Route.html">Route</a></span></span>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber135">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber147">source</a></span></span>
     </span>
   </h3>
 
@@ -653,7 +680,15 @@ There are some exceptions:</p>
       <td data-ice="name" class="code" data-depth="0">params</td>
       <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Route properties</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">state</td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-RouteState">RouteState</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Initial state</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -700,11 +735,11 @@ There are some exceptions:</p>
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(param: <span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span>)</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(param0: <span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span>, param1: <span><a href="typedef/index.html#static-typedef-RouteState">RouteState</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber142">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber155">source</a></span></span>
     </span>
   </h3>
 
@@ -724,10 +759,18 @@ There are some exceptions:</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">param</td>
+      <td data-ice="name" class="code" data-depth="0">param0</td>
       <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-RouteParams">RouteParams</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Route properties</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">param1</td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-RouteState">RouteState</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Initial state</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -766,7 +809,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber239">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber309">source</a></span></span>
     </span>
   </h3>
 
@@ -825,7 +868,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber264">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber334">source</a></span></span>
     </span>
   </h3>
 
@@ -905,7 +948,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber375">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber439">source</a></span></span>
     </span>
   </h3>
 
@@ -961,7 +1004,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber249">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber319">source</a></span></span>
     </span>
   </h3>
 
@@ -1017,7 +1060,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber195">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber238">source</a></span></span>
     </span>
   </h3>
 
@@ -1073,7 +1116,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber365">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber429">source</a></span></span>
     </span>
   </h3>
 
@@ -1129,7 +1172,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber340">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber410">source</a></span></span>
     </span>
   </h3>
 
@@ -1174,6 +1217,61 @@ There are some exceptions:</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-isModal">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">isModal</span><span class="code" data-ice="signature">(): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber218">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-matchPath">
     <span class="access" data-ice="access">public</span>
     
@@ -1181,18 +1279,18 @@ There are some exceptions:</p>
     
     
     
-    <span class="code" data-ice="name">matchPath</span><span class="code" data-ice="signature">(url: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>Match</span></span>
+    <span class="code" data-ice="name">matchPath</span><span class="code" data-ice="signature">(url: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="typedef/index.html#static-typedef-RouteMatch">RouteMatch</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber349">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber419">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Queries if specified url match to the route path</p>
+  <div data-ice="description"><p>Checks if the specified url match to the route path</p>
 </div>
 
   
@@ -1221,7 +1319,7 @@ There are some exceptions:</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Match</span></td>
+          <td class="return-type code" data-ice="returnType"><span><a href="typedef/index.html#static-typedef-RouteMatch">RouteMatch</a></span></td>
           
         </tr>
       </tbody>
@@ -1257,7 +1355,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber310">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber380">source</a></span></span>
     </span>
   </h3>
 
@@ -1355,7 +1453,7 @@ Route.of({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber330">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber400">source</a></span></span>
     </span>
   </h3>
 
@@ -1453,7 +1551,7 @@ Route.of({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber185">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber228">source</a></span></span>
     </span>
   </h3>
 
@@ -1502,18 +1600,18 @@ Route.of({
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-toObject">
+  <h3 data-ice="anchor" id="instance-method-toJSON">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">toObject</span><span class="code" data-ice="signature">(): {path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&gt;}</span>
+    <span class="code" data-ice="name">toJSON</span><span class="code" data-ice="signature">(): {path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&gt;}</span>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber216">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber248">source</a></span></span>
     </span>
   </h3>
 
@@ -1569,7 +1667,7 @@ Route.of({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber229">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber279">source</a></span></span>
     </span>
   </h3>
 
@@ -1627,7 +1725,7 @@ Route.of({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber290">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Route.js.html#lineNumber360">source</a></span></span>
     </span>
   </h3>
 

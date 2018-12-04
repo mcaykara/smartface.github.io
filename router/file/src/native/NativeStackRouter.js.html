@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -73,7 +72,8 @@
 /**
  * @typedef {RouterParams} NativeStackRouterParams
  * @property {Array&lt;BottomTabBarItem&gt;} items BottomTabBarItem collection
- * @property {function():HeaderBarParams} headerBarParams See {@link NavigationController}
+ * @property {function():HeaderBarParams} modal
+ * @property {function():HeaderBarParams} headerBarParams Properties of NavigationController&apos;s headerbar. See {@link NavigationController}.
  */
 
 /**
@@ -147,15 +147,15 @@ const createRenderer = require(&quot;./createRenderer&quot;);
  *
  * @example
  * const extend = require(&quot;js-base/core/extend&quot;);
- *  const System = require(&quot;sf-core/device/system&quot;);
- *  const Application = require(&quot;sf-core/application&quot;);
- *  const AlertView = require(&quot;sf-core/ui/alertview&quot;);
- *  const {NativeStackRouter} = require(&apos;@smartface/router&apos;);
+ * const System = require(&quot;sf-core/device/system&quot;);
+ * const Application = require(&quot;sf-core/application&quot;);
+ * const AlertView = require(&quot;sf-core/ui/alertview&quot;);
+ * const {NativeStackRouter} = require(&apos;@smartface/router&apos;);
  *
- *  // Get generated UI code
- *  const Page1Design = require(&quot;ui/ui_page1&quot;);
+ * // Get generated UI code
+ * const Page1Design = require(&quot;ui/ui_page1&quot;);
  *
- *  const Page1 = extend(Page1Design)(
+ * const Page1 = extend(Page1Design)(
  *   // Constructor
  *   function(_super, data, router) {
  *       // Initalizes super class for this page scope
@@ -194,30 +194,34 @@ class NativeStackRouter extends NativeRouterBase {
     renderer = null,
     to = null,
     isRoot = false,
+    modal = false,
     headerBarParams = () =&gt; {},
     routerDidEnter,
     routerDidExit,
-    routeShouldMatch
+    routeShouldMatch,
+    homeRoute = null
   }) {
     super({
       path,
       build,
       routes,
       exact,
+      modal,
       to,
       isRoot,
       routerDidEnter,
       routerDidExit,
-      routeShouldMatch
+      routeShouldMatch,
+      homeRoute
     });
-    this._fromRouter = true;
+
+    this._homeRoute = homeRoute;
+    this._headerBarParams = headerBarParams;
     this._renderer = renderer;
     this._renderer.setRootController(new NavigationController());
     this.addNavigatorChangeListener();
     this.build = () =&gt; this._renderer._rootController;
-    // this._renderer._rootController.onLoad = () =&gt; {
     this._renderer._rootController.headerBar = headerBarParams();
-    // };
   }
 
   /**
@@ -238,32 +242,39 @@ class NativeStackRouter extends NativeRouterBase {
     return this._renderer._rootController.headerBar;
   }
 
+  /**
+   * @ignore
+   * @param {*} prevState
+   * @param {*} nextState
+   */
   routeShouldMatch(prevState, nextState) {
     if (this.isUrlCurrent(nextState.match.url, nextState.action)) return false;
     return super.routeShouldMatch(prevState, nextState);
   }
 
   /**
+   * To Listen page changes are handled by device.
+   *
    * @private
-   * Add new listener to listen NavigationController transitions.
    */
   addNavigatorChangeListener() {
     this._unlistener = this._renderer.onNavigationControllerTransition(
       action =&gt; {
         // if user presses backbutton or uses gesture to back
-        if (action.operation === NavigationController.OperationType.POP) {
-          // set Router to skip next history change
-          // this._fromRouter = false;
+        if (
+          action.operation === NavigationController.OperationType.POP &amp;&amp;
+          !this._fromRouter
+        ) {
           try {
+            // set Router to skip next history change
             this._historyController.preventDefault();
             this._historyController.goBack();
-            this._fromRouter = false;
             this.dispatch(
               this._historyController.history.location,
               &quot;POP&quot;,
-              this
+              this,
+              false
             );
-            this._fromRouter = true;
           } catch (e) {
             throw e;
           } finally {
@@ -273,56 +284,109 @@ class NativeStackRouter extends NativeRouterBase {
     );
   }
 
-  /**
-   * @override
-   *
-   */
-  dispose() {
-    super.dispose();
-    this._unlistener();
+  pushHomeBefore(path) {
+    if (
+      this.hasHome() &amp;&amp;
+      this._renderer._rootController.childControllers.length === 0
+    ) {
+      const indexRoute = this._routes[this._homeRoute];
+
+      if (path !== indexRoute.getUrlPath()) {
+        this._historyController.push(indexRoute.getUrlPath());
+      }
+    }
+
+    return true;
   }
 
   push(path, routeData = {}) {
-    if (path === this._currentUrl) {
-      Object.assign(
-        this._historyController.history.location.state.routeData,
-        routeData
-      );
-      this.dispatch(this._historyController.history.location, &quot;PUSH&quot;, this);
-
-      return this;
-    }
-
     return super.push(path, routeData);
   }
 
-  routeWillEnter(route) {
-    const state = route.getState();
-    switch (state.action) {
+  /**
+   * @override
+   */
+  routeWillEnter(route, requestedUrl, act, ex, target, fromRouter) {
+    const {
+      view,
+      match: { isExact: exact },
+      url,
+      action
+    } = route.getState();
+    const active = url === this._currentRouteUrl;
+    switch (action) {
       case &quot;REPLACE&quot;:
+        break;
       case &quot;PUSH&quot;:
-        if (this._fromRouter &amp;&amp; this._currentUrl !== route.getUrlPath())
-          this._renderer.pushChild(state.view);
+        if (this._fromRouter) {
+          if (route.isModal() &amp;&amp; !this._presented &amp;&amp; !active) {
+            const lastLocation = Router.getGlobalRouter().history.entries[
+              Router.getGlobalRouter().history.index
+            ];
+            const lastLocationIndex = Router.getGlobalRouter().history.index;
+            this._renderer.present(
+              (route._renderer &amp;&amp; route._renderer._rootController) || view
+            );
+            route.dismiss = this._dismiss = () =&gt; {
+              route._renderer.dismiss(() =&gt; {
+                route.dismiss = null;
+                route._presented = false;
+                route._currentRouteUrl = null;
+                this._currentRouteUrl = null;
+
+                this._presented = false;
+                let diff =
+                  Router.getGlobalRouter().history.index - lastLocationIndex;
+                // exits all locations in the modal router
+                while (diff &gt; 1) {
+                  Router.getGlobalRouter().history.rollback();
+                  diff--;
+                }
+                this._historyController.preventDefault();
+                this._historyController.goBack();
+                this.dispatch(lastLocation, &quot;POP&quot;, this, false);
+
+                route.setState({ active: false });
+                route.resetView();
+              });
+            };
+
+            this._presented = true;
+            route.setState({ active: true });
+          } else if (!route.isModal() &amp;&amp; !active) {
+            this._currentRouteUrl = url;
+            try {
+              this._renderer.pushChild(
+                (route._renderer &amp;&amp; route._renderer._rootController) || view
+              );
+            } catch (e) {
+              throw `Error when ${route} is pushed. ${e}`;
+            } finally {
+              route.setState({ active: true });
+            }
+          }
+        }
+
         break;
       case &quot;POP&quot;:
-        if (this._fromRouter &amp;&amp; Router.currentRouter === this)
-          this._renderer.popChild();
+        // TODO: Add dismiss logic
+        if (this._fromRouter) {
+          if (!route.dismiss &amp;&amp; exact) {
+            this._renderer.popChild();
+          }
+        }
+
+        route.setState({ active: false });
         break;
     }
+    this._currentRouteUrl = url;
   }
 
-  /**
-   * Event handler when a router exits from active state
-   *
-   * @override
-   * @protected
-   * @event
-   * @param {string} action
-   */
-  onRouterExit(action) {
-    super.onRouterExit(action);
-    // if (action === &quot;POP&quot;)
-    // this._renderer.setRootController(new NavigationController());
+  resetView() {
+    this.clearUrl();
+    this._currentRouteUrl = null;
+    this._renderer.setChildControllers([]);
+    this._historyController.clear();
   }
 }
 

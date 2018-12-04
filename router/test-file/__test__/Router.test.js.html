@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -269,9 +268,6 @@ describe(&quot;Router&quot;, () =&gt; {
         }),
         new Router({
           path: &quot;/path2&quot;,
-          build: (router, route) =&gt; ({
-            type: &quot;target1&quot;
-          }),
           routes: [
             new Route({
               path: &quot;/path2/to/:id&quot;,
@@ -289,21 +285,15 @@ describe(&quot;Router&quot;, () =&gt; {
         })
       ]
     });
-    // let matches = matchRoutes([router], &quot;/path/to/1&quot;).map(
-    //   ({ match, route }) =&gt; ({ match, route: route.toObject(), view: route.build() })
-    // );
 
-    // router.listen((location, action) =&gt; {
-    //   console.log(&quot;---------------&quot;);
-    //   console.log(location.pathname, action);
-    //   console.log(router.getHistoryasArray());
-    // });
     router.push(&quot;/&quot;);
     expect(lastUrl).toBe(&quot;/path/to/the/1&quot;);
+    expect(_router1.toString()).toBe(
+      &quot;[object Router, path: /path/to, url: /path/to/the/1]&quot;
+    );
     expect(_router1.getHistoryasArray()).toEqual([&quot;/path/to/the/1&quot;]);
 
     _router1.push(&quot;/path2/to/1&quot;);
-    console.log(_router2.getHistoryasArray(), _router1.getHistoryasArray());
     expect(lastUrl).toBe(&quot;/path2/to/1&quot;);
     expect(_router2.getHistoryasArray()).toEqual([&quot;/path2/to/1&quot;]);
 
@@ -323,7 +313,6 @@ describe(&quot;Router&quot;, () =&gt; {
     ]);
 
     _router2.goBack();
-    console.log(router.getHistoryasArray(), _router2.getHistoryasArray());
 
     expect(lastUrl).toBe(&quot;/path2/to/1&quot;);
 
@@ -370,20 +359,81 @@ describe(&quot;Router&quot;, () =&gt; {
       .push(&quot;/path/to/1&quot;)
       ._matches.map(({ match, route }) =&gt; ({
         match,
-        route: route.toObject(),
+        route: route.toJSON(),
         view: route.build()
       }));
 
-    expect(matches).toEqual([
-      {
+    expect(matches).toEqual[
+      ({
         match: { isExact: false, params: {}, path: &quot;/&quot;, url: &quot;/&quot; },
         route: {
+          match: {},
           path: &quot;/&quot;,
+          routeData: {},
           routes: [
-            { path: &quot;/path/to/:name&quot;, routes: [] },
-            { path: &quot;/path/to/:id&quot;, routes: [] },
-            { path: &quot;*&quot;, routes: [] }
-          ]
+            {
+              match: {},
+              path: &quot;/path/to/:name&quot;,
+              routeData: {},
+              routes: [],
+              routingState: {},
+              state: {
+                action: null,
+                active: false,
+                match: {},
+                routeData: {},
+                routingState: {},
+                url: null,
+                view: undefined
+              },
+              type: &quot;route&quot;
+            },
+            {
+              match: {},
+              path: &quot;/path/to/:id&quot;,
+              routeData: {},
+              routes: [],
+              routingState: {},
+              state: {
+                action: null,
+                active: false,
+                match: {},
+                routeData: {},
+                routingState: {},
+                url: null,
+                view: undefined
+              },
+              type: &quot;route&quot;
+            },
+            {
+              match: {},
+              path: &quot;*&quot;,
+              routeData: {},
+              routes: [],
+              routingState: {},
+              state: {
+                action: null,
+                active: false,
+                match: {},
+                routeData: {},
+                routingState: {},
+                url: null,
+                view: undefined
+              },
+              type: &quot;route&quot;
+            }
+          ],
+          routingState: {},
+          state: {
+            action: &quot;PUSH&quot;,
+            active: false,
+            match: { isExact: false, params: {}, path: &quot;/&quot;, url: &quot;/&quot; },
+            routeData: {},
+            routingState: {},
+            url: null,
+            view: undefined
+          },
+          type: &quot;route&quot;
         },
         view: null
       },
@@ -394,10 +444,31 @@ describe(&quot;Router&quot;, () =&gt; {
           path: &quot;/path/to/:name&quot;,
           url: &quot;/path/to/1&quot;
         },
-        route: { path: &quot;/path/to/:name&quot;, routes: [] },
+        route: {
+          match: {},
+          path: &quot;/path/to/:name&quot;,
+          routeData: {},
+          routes: [],
+          routingState: {},
+          state: {
+            action: &quot;PUSH&quot;,
+            active: false,
+            match: {
+              isExact: true,
+              params: { name: &quot;1&quot; },
+              path: &quot;/path/to/:name&quot;,
+              url: &quot;/path/to/1&quot;
+            },
+            routeData: {},
+            routingState: {},
+            url: &quot;/path/to/1&quot;,
+            view: &quot;Object&quot;
+          },
+          type: &quot;route&quot;
+        },
         view: { type: &quot;target1&quot; }
-      }
-    ]);
+      })
+    ];
   });
   it(&quot;return only root path if any route doesn&apos;t be matched&quot;, () =&gt; {
     const router = new Router({
@@ -457,7 +528,7 @@ describe(&quot;Router&quot;, () =&gt; {
     expect(data.match.params).toEqual({ name: &quot;1&quot; });
     expect(data.routeData).toEqual({ name: &quot;name&quot; });
   });
-  it(&quot;gets history back&quot;, () =&gt; {
+  it(&quot;can get back in its history&quot;, () =&gt; {
     let data;
     let callCount = 0;
     var component = {};
@@ -469,15 +540,20 @@ describe(&quot;Router&quot;, () =&gt; {
           path: &quot;/path&quot;,
           routes: [
             new Route({
+              routeDidEnter: () =&gt; {
+                callCount++;
+              },
               path: &quot;/path/to/:name&quot;,
               build: (router, route) =&gt; {
                 data = route.getState();
-                callCount++;
                 return { type: &quot;target1&quot; };
               }
             }),
             new Route({
               path: &quot;/path/too/:name&quot;,
+              routeDidEnter: () =&gt; {
+                callCount++;
+              },
               build: (router, route) =&gt; {
                 component.router = router;
                 return component;
@@ -500,7 +576,7 @@ describe(&quot;Router&quot;, () =&gt; {
     expect(data.routeData).toEqual({ name: &quot;name1&quot; });
 
     expect(component.router === router).toBe(false);
-    expect(callCount).toBe(2);
+    expect(callCount).toBe(3);
   });
 
   it(&quot;calls back to parent if its history is empty&quot;, () =&gt; {
@@ -546,11 +622,16 @@ describe(&quot;Router&quot;, () =&gt; {
 
     router.push(&quot;/path2/to/1&quot;, { name: &quot;name1&quot; });
     expect(route.getState().routeData).toEqual({ name: &quot;name1&quot; });
+    expect(router.getHistoryasArray()).toEqual([&quot;/path2/to/1&quot;]);
+
     router.push(&quot;/path/to/dev&quot;, { name: &quot;name2&quot; });
+    expect(router.getHistoryasArray()).toEqual([&quot;/path2/to/1&quot;, &quot;/path/to/dev&quot;]);
     expect(route.getState().routeData).toEqual({ name: &quot;name2&quot; });
+
     component.router.goBack();
-    expect(route.getState().routeData).toEqual({ name: &quot;name1&quot; });
-    expect(callCount).toBe(3);
+    expect(router._historyController.lastLocation.pathname).toEqual(
+      &quot;/path2/to/1&quot;
+    );
   });
   it(&quot;can call a relative path&quot;, () =&gt; {
     let data;
@@ -747,10 +828,10 @@ describe(&quot;Router&quot;, () =&gt; {
 
   it(&quot;should be routed from child Routers&quot;, () =&gt; {
     let callCount = 0;
-    var component1 = {};
-    var component2 = {};
+    let component1 = {};
+    let component2 = {};
 
-    var router1 = Router.of({
+    let router1 = Router.of({
       path: &quot;/stack1&quot;,
       to: &quot;/stack1/to/1&quot;,
       routes: [
@@ -773,7 +854,7 @@ describe(&quot;Router&quot;, () =&gt; {
 
     router1.name = &quot;router1&quot;;
 
-    var router2 = Router.of({
+    let router2 = Router.of({
       path: &quot;/stack2&quot;,
       to: &quot;/stack2/to/1&quot;,
       routes: [

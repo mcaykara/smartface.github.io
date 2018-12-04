@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -74,7 +73,7 @@
   
   
   <span data-ice="since">| since 1.0.0</span>
-  <span data-ice="source">| <span><a href="file/src/native/NativeRouter.js.html#lineNumber39">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/native/NativeRouter.js.html#lineNumber40">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -84,7 +83,7 @@
 
   
   
-  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>src/native/NativeModalRouter.js~NativeRouterBase</span> &#x2192; NativeRouter</div></div>
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>src/native/NativeRouter.js~NativeRouterBase</span> &#x2192; NativeRouter</div></div>
   
   
   
@@ -94,7 +93,7 @@
 
   
   
-  <div class="description" data-ice="description"><p>It creates root <span><a href="http://docs.smartface.io/#!/api/UI.Page">Page</a></span> and adds and removes child pages.</p>
+  <div class="description" data-ice="description"><p>It creates a root fragment Rotuer adds and removes child routers and pages as application root.</p>
 </div>
   
 
@@ -229,41 +228,7 @@ var router = Router.of({
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html#instance-method-routeWillEnter">routeWillEnter</a></span></span><span class="code" data-ice="signature">(route: <span>*</span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-</tbody>
-</table>
-<table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3">Protected Methods</td></tr></thead>
-  <tbody>
-  
-  <tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">protected</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html#instance-method-addChildRouter">addChildRouter</a></span></span><span class="code" data-ice="signature">(router: <span><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span><span>[]</span></span> | <span><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span><span>[]</span></span> | <span><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span><span>[]</span></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html#instance-method-routeWillEnter">routeWillEnter</a></span></span><span class="code" data-ice="signature">(route: <span>*</span>, action: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -298,7 +263,7 @@ var router = Router.of({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/native/NativeRouter.js.html#lineNumber46">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/native/NativeRouter.js.html#lineNumber47">source</a></span></span>
     </span>
   </h3>
 
@@ -373,7 +338,7 @@ var router = Router.of({
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/native/NativeRouter.js.html#lineNumber55">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/native/NativeRouter.js.html#lineNumber56">source</a></span></span>
     </span>
   </h3>
 
@@ -432,11 +397,11 @@ var router = Router.of({
     
     
     
-    <span class="code" data-ice="name">routeWillEnter</span><span class="code" data-ice="signature">(route: <span>*</span>)</span>
+    <span class="code" data-ice="name">routeWillEnter</span><span class="code" data-ice="signature">(route: <span>*</span>, action: <span>*</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/native/NativeRouter.js.html#lineNumber102">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/native/NativeRouter.js.html#lineNumber89">source</a></span></span>
     </span>
   </h3>
 
@@ -461,64 +426,9 @@ var router = Router.of({
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<h2 data-ice="title">Protected Methods</h2>
-
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-addChildRouter">
-    <span class="access" data-ice="access">protected</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">addChildRouter</span><span class="code" data-ice="signature">(router: <span><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span><span>[]</span></span> | <span><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span><span>[]</span></span> | <span><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span><span>[]</span></span>)</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/native/NativeRouter.js.html#lineNumber93">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">router</td>
-      <td data-ice="type" class="code"><span><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span><span>[]</span></span> | <span><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span><span>[]</span></span> | <span><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span><span>[]</span></span></td>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">action</td>
+      <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>

@@ -44,7 +44,6 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#native">native</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/AndroidRenderer.js~AndroidRenderer.html">AndroidRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/BottomTabBarRouter.js~BottomTabBarRouter.html">BottomTabBarRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/IOSRenderer.js~IOSRenderer.html">IOSRenderer</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeModalRouter.js~NativeModalRouter.html">NativeModalRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouter.js~NativeRouter.html">NativeRouter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeRouterBase.js~NativeRouterBase.html">NativeRouterBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/native/NativeStackRouter.js~NativeStackRouter.html">NativeStackRouter</a></span></span></li>
@@ -70,8 +69,22 @@
 <div class="content" data-ice="content"><h1 data-ice="title">__test__/Route.test.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const Route = require(&quot;../src/router/Route&quot;);
 const matchRoutes = require(&quot;../src/common/matchRoutes&quot;);
+const createStore = require(&quot;../src/router/routeStore&quot;);
 
 describe(&quot;Route&quot;, () =&gt; {
+  it(&quot;can be matched any url&quot;, () =&gt; {
+    var route = new Route({
+      path: &quot;/path/to/:id&quot;
+    });
+
+    var res = route.matchPath(&quot;/path/to/1?type=any&quot;);
+    expect(res).toEqual({
+      isExact: true,
+      params: { id: &quot;1&quot; },
+      path: &quot;/path/to/:id&quot;,
+      url: &quot;/path/to/1&quot;
+    });
+  });
   it(&quot;has a path&quot;, () =&gt; {
     const route = new Route({ path: &quot;/path&quot; });
 
@@ -94,7 +107,7 @@ describe(&quot;Route&quot;, () =&gt; {
         new Route({ path: &quot;/path/to/cenk&quot; })
       ]
     });
-    const matches = matchRoutes([route], &quot;/path/to/1&quot;).map(
+    const matches = matchRoutes(createStore(), [route], &quot;/path/to/1&quot;).map(
       ({ match, route }) =&gt; ({ match })
     );
 
