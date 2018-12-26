@@ -75,9 +75,9 @@ const parseUrl = require(&quot;./parseUrl&quot;);
 
 const warning = require(&quot;./warning&quot;);
 const createPath = location =&gt; {
-  const { pathname, search, hash } = location;
+  const { url, search, hash } = location;
 
-  let path = pathname || &quot;/&quot;;
+  let path = url || &quot;/&quot;;
 
   if (search &amp;&amp; search !== &quot;?&quot;)
     path += search.charAt(0) === &quot;?&quot; ? search : `?${search}`;
@@ -102,7 +102,7 @@ const createLocation = (path, state, key, currentLocation) =&gt; {
     // One-arg form: push(location)
     location = Object.assign({}, path);
 
-    if (location.pathname === undefined) location.pathname = &quot;&quot;;
+    if (location.url === undefined) location.url = &quot;&quot;;
 
     if (location.query) {
       if (location.query.charAt(0) !== &quot;?&quot;)
@@ -122,12 +122,12 @@ const createLocation = (path, state, key, currentLocation) =&gt; {
   }
 
   try {
-    location.pathname = decodeURI(location.pathname);
+    location.url = decodeURI(location.url);
   } catch (e) {
     if (e instanceof URIError) {
       throw new URIError(
         &apos;Pathname &quot;&apos; +
-          location.pathname +
+          location.url +
           &apos;&quot; could not be decoded. &apos; +
           &quot;This is likely caused by an invalid percent-encoding.&quot;
       );
@@ -140,18 +140,18 @@ const createLocation = (path, state, key, currentLocation) =&gt; {
 
   if (currentLocation) {
     // Resolve incomplete/relative pathname relative to current location.
-    if (!location.pathname) {
-      location.pathname = currentLocation.pathname;
-    } else if (location.pathname.charAt(0) !== &quot;/&quot;) {
-      location.pathname = resolvePathname(
-        location.pathname,
-        currentLocation.pathname
+    if (!location.url) {
+      location.url = currentLocation.url;
+    } else if (location.url.charAt(0) !== &quot;/&quot;) {
+      location.url = resolvePathname(
+        location.url,
+        currentLocation.url
       );
     }
   } else {
     // When there is no prior location and pathname is empty, set it to /
-    if (!location.pathname) {
-      location.pathname = &quot;/&quot;;
+    if (!location.url) {
+      location.url = &quot;/&quot;;
     }
   }
 

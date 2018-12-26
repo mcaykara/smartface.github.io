@@ -73,7 +73,7 @@
   
   
   <span data-ice="since">| since 1.0.0</span>
-  <span data-ice="source">| <span><a href="file/src/router/Router.js.html#lineNumber189">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/router/Router.js.html#lineNumber188">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -93,7 +93,7 @@
 
   
   
-  <div class="description" data-ice="description"><p>Router Base</p>
+  <div class="description" data-ice="description"><p>Router Core Implemantation</p>
 </div>
   
 
@@ -128,7 +128,6 @@
               Route.of({
                   path: &quot;/stack/path2&quot;,
                   routeShouldMatch: (route, nextState) =&gt; {
-                      console.log(&apos;routeShouldMatch&apos;);
                       if (!nextState.routeData.applied) {
                           // blocks route changing
                           return false;
@@ -212,7 +211,6 @@
               Route.of({
                   path: &quot;/stack/path2&quot;,
                   routeShouldMatch: (route, nextState) =&gt; {
-                      console.log(&apos;routeShouldMatch&apos;);
                       if (!nextState.routeData.applied) {
                           // blocks route changing
                           return false;
@@ -402,6 +400,35 @@
     <td>
       
       <span class="since" data-ice="since">since 1.0.0</span>
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-canGoBack">canGoBack</a></span></span><span class="code" data-ice="signature">(n: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>it tests that Whether router can go back as n</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      <span class="since" data-ice="since">since 1.1.0</span>
     </td>
   </tr>
 <tr data-ice="target">
@@ -621,13 +648,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-push">push</a></span></span><span class="code" data-ice="signature">(path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routeData: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/router/Router.js~Router.html">Router</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-push">push</a></span></span><span class="code" data-ice="signature">(path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routeData: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, animated: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="class/src/router/Router.js~Router.html">Router</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Change history by specified path</p>
+        <div data-ice="description"><p>Pushes new history entry with specified path</p>
 </div>
       </div>
     </td>
@@ -656,7 +683,7 @@
       <div>
         
         
-        <div data-ice="description"><p>Handles router is deactivated.</p>
+        <div data-ice="description"><p>Emits when the router is deactivated.</p>
 </div>
       </div>
     </td>
@@ -778,7 +805,7 @@
       <div>
         
         
-        <div data-ice="description"><p>Redirects route and removes last route record from history.</p>
+        <div data-ice="description"><p>Redirects route and removes last route&apos;s record from the history.</p>
 </div>
       </div>
     </td>
@@ -865,7 +892,36 @@
       <div>
         
         
-        <div data-ice="description"><p>Route is matched handler.</p>
+        <div data-ice="description"><p>Route matched to requested url</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      <span class="since" data-ice="since">since 1.0.0</span>
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">protected</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-routeWillEnter">routeWillEnter</a></span></span><span class="code" data-ice="signature">(route: <span><a href="class/src/router/Route.js~Route.html">Route</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Handles a new route which is activated in the router</p>
 </div>
       </div>
     </td>
@@ -894,36 +950,7 @@
       <div>
         
         
-        <div data-ice="description"><p>Life-cycle event handler handles when Router is activated</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      <span class="since" data-ice="since">since 1.0.0</span>
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">protected</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/router/Router.js~Router.html#instance-method-routerWillEnter">routerWillEnter</a></span></span><span class="code" data-ice="signature">(route: <span><a href="class/src/router/Route.js~Route.html">Route</a></span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Handles a new route activated in the router</p>
+        <div data-ice="description"><p>Life-cycle handler emits when Router is activated</p>
 </div>
       </div>
     </td>
@@ -1457,7 +1484,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber209">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber208">source</a></span></span>
     </span>
   </h3>
 
@@ -1532,7 +1559,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber223">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber222">source</a></span></span>
     </span>
   </h3>
 
@@ -1594,7 +1621,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber333">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber334">source</a></span></span>
     </span>
   </h3>
 
@@ -1650,7 +1677,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber300">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber301">source</a></span></span>
     </span>
   </h3>
 
@@ -1696,7 +1723,7 @@ There are some exceptions:</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber400">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber415">source</a></span></span>
     </span>
   </h3>
 
@@ -1785,6 +1812,88 @@ alert({
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-canGoBack">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">canGoBack</span><span class="code" data-ice="signature">(n: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+    <span class="right-info">
+      
+      <span class="since" data-ice="since">since 1.1.0</span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber366">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>it tests that Whether router can go back as n</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">n</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Amount of back as negative value
+return {boolean}</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">...
+router.canGoBack(-3) ? router.goBackto(-3) : // if not, do anything else</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-dispose">
     <span class="access" data-ice="access">public</span>
     
@@ -1796,7 +1905,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber872">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber897">source</a></span></span>
     </span>
   </h3>
 
@@ -1840,7 +1949,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber351">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber352">source</a></span></span>
     </span>
   </h3>
 
@@ -1896,7 +2005,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber818">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber843">source</a></span></span>
     </span>
   </h3>
 
@@ -1952,7 +2061,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber808">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber833">source</a></span></span>
     </span>
   </h3>
 
@@ -2008,7 +2117,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber777">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber802">source</a></span></span>
     </span>
   </h3>
 
@@ -2032,7 +2141,7 @@ alert({
       <td data-ice="name" class="code" data-depth="0">url</td>
       <td data-ice="type" class="code"><span>string </span> | <span> RouteLocation</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>This routes an experimental feature. If you use this feature you should use for same StackRouter stack.</p>
+      <td data-ice="description"><p>This is an experimental feature. If you use this feature you should use for same StackRouter stack.</p>
 </td>
     </tr>
 </tbody>
@@ -2081,7 +2190,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber365">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber380">source</a></span></span>
     </span>
   </h3>
 
@@ -2140,7 +2249,7 @@ alert({
   <div class="example-doc" data-ice="exampleDoc">
       
       <pre class="prettyprint source-code"><code data-ice="exampleCode">const unlisten = router.listen((location, action) =&gt; {
-    console.log(`new route location: ${location.pathname} action : ${action}`);
+    console.log(`new route location: ${location.url} action : ${action}`);
 });</code></pre>
     </div>
 </div>
@@ -2162,7 +2271,7 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber864">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber889">source</a></span></span>
     </span>
   </h3>
 
@@ -2230,18 +2339,18 @@ alert({
     
     
     
-    <span class="code" data-ice="name">push</span><span class="code" data-ice="signature">(path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routeData: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/router/Router.js~Router.html">Router</a></span></span>
+    <span class="code" data-ice="name">push</span><span class="code" data-ice="signature">(path: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, routeData: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, animated: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span><a href="class/src/router/Router.js~Router.html">Router</a></span></span>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber714">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber737">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Change history by specified path</p>
+  <div data-ice="description"><p>Pushes new history entry with specified path</p>
 </div>
 
   
@@ -2264,6 +2373,15 @@ alert({
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">routeData</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: {}</li>
+<li>nullable: false</li></ul></td>
+      <td data-ice="description"><p>routeData - Routing data</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">animated</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: {}</li>
 <li>nullable: false</li></ul></td>
@@ -2316,14 +2434,14 @@ alert({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber633">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber655">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Handles router is deactivated.</p>
+  <div data-ice="description"><p>Emits when the router is deactivated.</p>
 </div>
 
   
@@ -2404,7 +2522,7 @@ Router.of({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber297">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber298">source</a></span></span>
     </span>
   </h3>
 
@@ -2478,7 +2596,7 @@ Router.of({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber423">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber438">source</a></span></span>
     </span>
   </h3>
 
@@ -2560,7 +2678,7 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber698">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber720">source</a></span></span>
     </span>
   </h3>
 
@@ -2620,14 +2738,14 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber645">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber667">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Redirects route and removes last route record from history.</p>
+  <div data-ice="description"><p>Redirects route and removes last route&apos;s record from the history.</p>
 </div>
 
   
@@ -2692,7 +2810,7 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber457">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber472">source</a></span></span>
     </span>
   </h3>
 
@@ -2805,7 +2923,7 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber684">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber706">source</a></span></span>
     </span>
   </h3>
 
@@ -2888,14 +3006,14 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber668">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber690">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Route is matched handler.</p>
+  <div data-ice="description"><p>Route matched to requested url</p>
 </div>
 
   
@@ -2937,6 +3055,72 @@ in order to change display logic all the time.</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-routeWillEnter">
+    <span class="access" data-ice="access">protected</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">routeWillEnter</span><span class="code" data-ice="signature">(route: <span><a href="class/src/router/Route.js~Route.html">Route</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
+    <span class="right-info">
+      
+      <span class="since" data-ice="since">since 1.0.0</span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber585">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Handles a new route which is activated in the router</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">route</td>
+      <td data-ice="type" class="code"><span><a href="class/src/router/Route.js~Route.html">Route</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">action</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-routerDidEnter">
     <span class="access" data-ice="access">protected</span>
     
@@ -2948,14 +3132,14 @@ in order to change display logic all the time.</p>
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber598">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber620">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Life-cycle event handler handles when Router is activated</p>
+  <div data-ice="description"><p>Life-cycle handler emits when Router is activated</p>
 </div>
 
   
@@ -3021,66 +3205,6 @@ Router.of({
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-routerWillEnter">
-    <span class="access" data-ice="access">protected</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">routerWillEnter</span><span class="code" data-ice="signature">(route: <span><a href="class/src/router/Route.js~Route.html">Route</a></span>)</span>
-    <span class="right-info">
-      
-      <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber570">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Handles a new route activated in the router</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">route</td>
-      <td data-ice="type" class="code"><span><a href="class/src/router/Route.js~Route.html">Route</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-setasActiveRouter">
     <span class="access" data-ice="access">protected</span>
     
@@ -3092,7 +3216,7 @@ Router.of({
     <span class="right-info">
       
       <span class="since" data-ice="since">since 1.0.0</span>
-      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber609">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/router/Router.js.html#lineNumber631">source</a></span></span>
     </span>
   </h3>
 

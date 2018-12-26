@@ -198,6 +198,7 @@ class NativeStackRouter extends NativeRouterBase {
     headerBarParams = () =&gt; {},
     routerDidEnter,
     routerDidExit,
+    routeWillEnter = null,
     routeShouldMatch,
     homeRoute = null
   }) {
@@ -212,7 +213,8 @@ class NativeStackRouter extends NativeRouterBase {
       routerDidEnter,
       routerDidExit,
       routeShouldMatch,
-      homeRoute
+      homeRoute,
+      routeWillEnter
     });
 
     this._homeRoute = homeRoute;
@@ -244,12 +246,21 @@ class NativeStackRouter extends NativeRouterBase {
 
   /**
    * @ignore
-   * @param {*} prevState
-   * @param {*} nextState
+   * @param {RouteState} prevState
+   * @param {RouteState} nextState
    */
   routeShouldMatch(prevState, nextState) {
     if (this.isUrlCurrent(nextState.match.url, nextState.action)) return false;
     return super.routeShouldMatch(prevState, nextState);
+  }
+
+  /**
+   * Closes StackRouter&apos;s View if it is opened as modal.
+   *
+   * @param {function} fn - Callback is called before dismissing to trigger another action like routing to an another page.
+   */
+  dismiss(fn) {
+    this._dismiss &amp;&amp; this._dismiss(fn);
   }
 
   /**
@@ -284,6 +295,11 @@ class NativeStackRouter extends NativeRouterBase {
     );
   }
 
+  /**
+   * @protected
+   * @ignore
+   * @param {string} path
+   */
   pushHomeBefore(path) {
     if (
       this.hasHome() &amp;&amp;
@@ -299,6 +315,9 @@ class NativeStackRouter extends NativeRouterBase {
     return true;
   }
 
+  /**
+   * @override
+   */
   push(path, routeData = {}) {
     return super.push(path, routeData);
   }
@@ -316,6 +335,11 @@ class NativeStackRouter extends NativeRouterBase {
     const active = url === this._currentRouteUrl;
     switch (action) {
       case &quot;REPLACE&quot;:
+        if (this._fromRouter) {
+          this._renderer.replaceChild(
+            (route._renderer &amp;&amp; route._renderer._rootController) || view
+          );
+        }
         break;
       case &quot;PUSH&quot;:
         if (this._fromRouter) {
@@ -327,25 +351,31 @@ class NativeStackRouter extends NativeRouterBase {
             this._renderer.present(
               (route._renderer &amp;&amp; route._renderer._rootController) || view
             );
-            route.dismiss = this._dismiss = () =&gt; {
+            route._dismiss = (cb = null) =&gt; {
+              console.log(&quot;dismiss &quot; + route);
+              let diff =
+                Router.getGlobalRouter().history.index - lastLocationIndex;
+              // Rewinds global history as much as visit in the modal.
+              // Because routers in the tree are not aware of modal router will be dismissed.
+              // And if they are notified and then their current-urls will be outdated.
+              while (diff &gt; 1) {
+                Router.getGlobalRouter().history.rollback();
+                diff--;
+              }
+
+              this._historyController.preventDefault();
+              this._historyController.goBack();
+              // simulate a pop request to inform all routers
+              // regarding route changing
+              this.dispatch(lastLocation, &quot;POP&quot;, this, false);
+              cb &amp;&amp; cb();
               route._renderer.dismiss(() =&gt; {
-                route.dismiss = null;
+                route._dismiss = null;
                 route._presented = false;
                 route._currentRouteUrl = null;
                 this._currentRouteUrl = null;
 
                 this._presented = false;
-                let diff =
-                  Router.getGlobalRouter().history.index - lastLocationIndex;
-                // exits all locations in the modal router
-                while (diff &gt; 1) {
-                  Router.getGlobalRouter().history.rollback();
-                  diff--;
-                }
-                this._historyController.preventDefault();
-                this._historyController.goBack();
-                this.dispatch(lastLocation, &quot;POP&quot;, this, false);
-
                 route.setState({ active: false });
                 route.resetView();
               });
@@ -371,7 +401,7 @@ class NativeStackRouter extends NativeRouterBase {
       case &quot;POP&quot;:
         // TODO: Add dismiss logic
         if (this._fromRouter) {
-          if (!route.dismiss &amp;&amp; exact) {
+          if (!route._dismiss &amp;&amp; exact) {
             this._renderer.popChild();
           }
         }
@@ -380,6 +410,84 @@ class NativeStackRouter extends NativeRouterBase {
         break;
     }
     this._currentRouteUrl = url;
+    super.routeWillEnter(route);
+  }
+
+  /**
+   * Go back to index
+   * @example
+   * ...
+   * router.goBackto(-2)
+   * ...
+   * @since 1.1.0
+   * @param {number} n Amount of back as negative value. If stack length shorter than specified number then the active router does nothing.
+   */
+  goBackto(n) {
+    if (this._historyController.canGoBack(n)) {
+      const back = this._historyController.currentIndex() + n;
+      const location = this._historyController.find(
+        (location, index) =&gt; index === back
+      );
+      this._historyController.preventDefault();
+      this._historyController.goBackto(n);
+      this._renderer.popTo(back);
+      this.dispatch(location, &quot;POP&quot;, this, false);
+    }
+  }
+
+  /**
+   * Go back until the url
+   *
+   * @example
+   * ...
+   * router.goBacktoUrl(&apos;/back/to/url&apos;);
+   * ...
+   * @since 1.1.0
+   * @param {string} url - An url will be matched in the same stack
+   */
+  goBacktoUrl(url) {
+    this.goBackto(this.getStepLengthByCurrent(url));
+  }
+
+  /**
+   * Go back to first page in the same stack
+   *
+   * @example
+   * ...
+   * router.goBackHome();
+   * ...
+   * @since 1.1.0
+   */
+  goBackHome() {
+    const lastIndex = this._historyController.getLength() - 1;
+    const index = this._historyController.currentIndex();
+    const back = index - (lastIndex - index);
+    this.goBackto(-back);
+  }
+
+  /**
+   * Returns length of the history steps to be needed to receive from current to specified url
+   *
+   * @param {string} url
+   * @return {number}
+   */
+  getStepLengthByCurrent(url) {
+    const lastIndex = this._historyController.getLength() - 1;
+    const index = this._historyController.findIndex(
+      location =&gt; location.url === url
+    );
+
+    return index - lastIndex;
+  }
+
+  /**
+   * Tests if desired url is available to go back or not
+   *
+   * @param {string} url Desired url to test availability to go back
+   * @return {boolean}
+   */
+  canGoBacktoUrl(url) {
+    return this.canGoBackto(this.getStepLengthByCurrent(url));
   }
 
   resetView() {

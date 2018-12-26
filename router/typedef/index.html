@@ -1142,7 +1142,7 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">pathname</td>
+      <td data-ice="name" class="code" data-depth="0">url</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"><ul><li>nullable: false</li></ul></td>
       <td data-ice="description"><p>Requested url</p>
@@ -1746,6 +1746,15 @@
       <td data-ice="type" class="code"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(router: <span><a href="class/src/router/Router.js~Router.html">Router</a></span>, prevUrl: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, action: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span></span></td>
       <td data-ice="appendix"><ul><li>nullable: true</li></ul></td>
       <td data-ice="description"><p>Handles the Router is deactived.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">routeWillEnter</td>
+      <td data-ice="type" class="code"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(router: <span><a href="class/src/router/Router.js~Router.html">Router</a></span>, route: <span><a href="class/src/router/Route.js~Route.html">Route</a></span>, viewController: <span><a href="http://docs.smartface.io/#!/api/UI.NavigationController">NavigationController</a></span>)</span></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: null</li>
+<li>nullable: true</li></ul></td>
+      <td data-ice="description"><p>A route or a router which is called by request in the router will be entered.</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">

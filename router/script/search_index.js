@@ -211,43 +211,43 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber513",
+    "test-file/__test__/Router.test.js.html#lineNumber504",
     "Router calls back to parent if its history is empty",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber626",
+    "test-file/__test__/Router.test.js.html#lineNumber615",
     "Router can be blocked",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber567",
+    "test-file/__test__/Router.test.js.html#lineNumber556",
     "Router can call a relative path",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber699",
+    "test-file/__test__/Router.test.js.html#lineNumber688",
     "Router can call child Routers",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber462",
+    "test-file/__test__/Router.test.js.html#lineNumber453",
     "Router can get back in its history",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber667",
+    "test-file/__test__/Router.test.js.html#lineNumber656",
     "Router can redirect to specified route with route-data when route has 'to' attribute",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber265",
+    "test-file/__test__/Router.test.js.html#lineNumber256",
     "Router finds target by url",
     "test"
   ],
@@ -265,13 +265,13 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber404",
+    "test-file/__test__/Router.test.js.html#lineNumber395",
     "Router return only root path if any route doesn't be matched",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber436",
+    "test-file/__test__/Router.test.js.html#lineNumber427",
     "Router sends data and params to specified route",
     "test"
   ],
@@ -283,20 +283,20 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber171",
+    "test-file/__test__/Router.test.js.html#lineNumber166",
     "Router should add last route to root router whenever a route redirects.",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber760",
+    "test-file/__test__/Router.test.js.html#lineNumber749",
     "Router should be routed from child Routers",
     "test"
   ],
   [
     "",
-    "test-file/__test__/Router.test.js.html#lineNumber139",
-    "Router should call route's build when history goes back",
+    "test-file/__test__/Router.test.js.html#lineNumber134",
+    "Router shouldn't call route's build when history goes back",
     "test"
   ],
   [
@@ -810,12 +810,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/native/iosrenderer.js~iosrenderer#popto",
-    "class/src/native/IOSRenderer.js~IOSRenderer.html#instance-method-popTo",
-    "src/native/IOSRenderer.js~IOSRenderer#popTo",
-    "method"
-  ],
-  [
     "src/native/iosrenderer.js~iosrenderer#pushchild",
     "class/src/native/IOSRenderer.js~IOSRenderer.html#instance-method-pushChild",
     "src/native/IOSRenderer.js~IOSRenderer#pushChild",
@@ -900,9 +894,45 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/native/nativestackrouter.js~nativestackrouter#cangobacktourl",
+    "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-canGoBacktoUrl",
+    "src/native/NativeStackRouter.js~NativeStackRouter#canGoBacktoUrl",
+    "method"
+  ],
+  [
     "src/native/nativestackrouter.js~nativestackrouter#constructor",
     "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-constructor-constructor",
     "src/native/NativeStackRouter.js~NativeStackRouter#constructor",
+    "method"
+  ],
+  [
+    "src/native/nativestackrouter.js~nativestackrouter#dismiss",
+    "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-dismiss",
+    "src/native/NativeStackRouter.js~NativeStackRouter#dismiss",
+    "method"
+  ],
+  [
+    "src/native/nativestackrouter.js~nativestackrouter#getsteplengthbycurrent",
+    "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-getStepLengthByCurrent",
+    "src/native/NativeStackRouter.js~NativeStackRouter#getStepLengthByCurrent",
+    "method"
+  ],
+  [
+    "src/native/nativestackrouter.js~nativestackrouter#gobackhome",
+    "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-goBackHome",
+    "src/native/NativeStackRouter.js~NativeStackRouter#goBackHome",
+    "method"
+  ],
+  [
+    "src/native/nativestackrouter.js~nativestackrouter#gobackto",
+    "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-goBackto",
+    "src/native/NativeStackRouter.js~NativeStackRouter#goBackto",
+    "method"
+  ],
+  [
+    "src/native/nativestackrouter.js~nativestackrouter#gobacktourl",
+    "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-goBacktoUrl",
+    "src/native/NativeStackRouter.js~NativeStackRouter#goBacktoUrl",
     "method"
   ],
   [
@@ -910,6 +940,12 @@ window.esdocSearchIndex = [
     "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-get-headerBar",
     "src/native/NativeStackRouter.js~NativeStackRouter#headerBar",
     "member"
+  ],
+  [
+    "src/native/nativestackrouter.js~nativestackrouter#push",
+    "class/src/native/NativeStackRouter.js~NativeStackRouter.html#instance-method-push",
+    "src/native/NativeStackRouter.js~NativeStackRouter#push",
+    "method"
   ],
   [
     "src/native/nativestackrouter.js~nativestackrouter#routewillenter",
@@ -963,6 +999,12 @@ window.esdocSearchIndex = [
     "src/native/renderer.js~renderer#popchild",
     "class/src/native/Renderer.js~Renderer.html#instance-method-popChild",
     "src/native/Renderer.js~Renderer#popChild",
+    "method"
+  ],
+  [
+    "src/native/renderer.js~renderer#popto",
+    "class/src/native/Renderer.js~Renderer.html#instance-method-popTo",
+    "src/native/Renderer.js~Renderer#popTo",
     "method"
   ],
   [
@@ -1230,6 +1272,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/router/router.js~router#cangoback",
+    "class/src/router/Router.js~Router.html#instance-method-canGoBack",
+    "src/router/Router.js~Router#canGoBack",
+    "method"
+  ],
+  [
     "src/router/router.js~router#constructor",
     "class/src/router/Router.js~Router.html#instance-constructor-constructor",
     "src/router/Router.js~Router#constructor",
@@ -1326,6 +1374,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/router/router.js~router#routewillenter",
+    "class/src/router/Router.js~Router.html#instance-method-routeWillEnter",
+    "src/router/Router.js~Router#routeWillEnter",
+    "method"
+  ],
+  [
     "src/router/router.js~router#routerdidenter",
     "class/src/router/Router.js~Router.html#instance-method-routerDidEnter",
     "src/router/Router.js~Router#routerDidEnter",
@@ -1335,12 +1389,6 @@ window.esdocSearchIndex = [
     "src/router/router.js~router#routerdidexit",
     "class/src/router/Router.js~Router.html#instance-method-routerDidExit",
     "src/router/Router.js~Router#routerDidExit",
-    "method"
-  ],
-  [
-    "src/router/router.js~router#routerwillenter",
-    "class/src/router/Router.js~Router.html#instance-method-routerWillEnter",
-    "src/router/Router.js~Router#routerWillEnter",
     "method"
   ],
   [

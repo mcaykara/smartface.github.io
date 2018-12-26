@@ -165,7 +165,7 @@ function createHistory({
     }
 
     getHistoryasArray() {
-      return _history.entries.map(item =&gt; item.pathname);
+      return _history.entries.map(item =&gt; item.url);
     }
 
     /**
@@ -185,7 +185,7 @@ function createHistory({
           this.onGoBack &amp;&amp; this.onGoBack();
         }
       };
-      // bubbles history push to root if push could be possible.
+      // bubbles the last push up to root until pushing can be possible.
       node.onPush = (path, data) =&gt; {
         if (this.canPush(path)) {
           this.push(path, data);
@@ -265,11 +265,21 @@ function createHistory({
 
     /**
      * If history can be gone back or not
+     * @param {number} n it&apos;s a negative number to go bac
      *
      * @return boolean
      */
-    canGoBack() {
-      return _history.canGo(-1);
+    canGoBack(n=-1) {
+      return _history.canGo(n);
+    }
+    
+    goBackto(n){
+      _history.go(n) 
+      _preventDefault &amp;&amp; this.clearPreventDefault();
+    }
+    
+    currentIndex(){
+      return _history.index;
     }
 
     /**
@@ -280,6 +290,10 @@ function createHistory({
         ? _history.goBack()
         : !_preventDefault &amp;&amp; this.onGoBack &amp;&amp; this.onGoBack();
       _preventDefault &amp;&amp; this.clearPreventDefault();
+    }
+    
+    getLength(){
+      return _history.length
     }
 
     /**
@@ -306,6 +320,14 @@ function createHistory({
         _listeners.delete(fn);
       };
     }
+    
+    findIndex(fn){
+      return _history.entries.findIndex(fn);
+    }
+
+    find(fn){
+      return _history.entries.find(fn);
+    }
 
     /**
      * Returns string representation of an instance
@@ -313,9 +335,8 @@ function createHistory({
      * @return {string}
      */
     toString() {
-      return `[Object HistoryController, stack: ${JSON.stringify(
-        this.getHistoryasArray()
-      )},
+      return `[Object HistoryController, 
+        stack: ${JSON.stringify(this.getHistoryasArray())}, 
         length ${_history.length}, 
         index : ${_history.index}]`;
     }

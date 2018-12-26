@@ -116,11 +116,12 @@ function handleRouteUrl(router, url, routeData, action) {
  * @property {?boolean} [sensitive=false] sensitive Path is case sensitive or not
  * @property {?function(router: Router, prevUrl: string, currentUrl: stirng, action: string)} routerDidEnter Handles the Router is actived.
  * @property {?function(router: Router, prevUrl: string, action: string)} routerDidExit Handles the Router is deactived.
+ * @property {?function(router: Router, route: Route, viewController : NavigationController)} [routeWillEnter=null] A route or a router which is called by request in the router will be entered.
  * @property {number} homeRoute Home route index of the router&apos;s children. If it pushes first when routed to router&apos;s.
  */
 
 /**
- * Router Base
+ * Router Core Implemantation
  *
  * @description
  * Router implementation creates a thin layer between view and application layers
@@ -153,7 +154,6 @@ function handleRouteUrl(router, url, routeData, action) {
  *               Route.of({
  *                   path: &quot;/stack/path2&quot;,
  *                   routeShouldMatch: (route, nextState) =&gt; {
- *                       console.log(&apos;routeShouldMatch&apos;);
  *                       if (!nextState.routeData.applied) {
  *                           // blocks route changing
  *                           return false;
@@ -236,7 +236,6 @@ function handleRouteUrl(router, url, routeData, action) {
  *               Route.of({
  *                   path: &quot;/stack/path2&quot;,
  *                   routeShouldMatch: (route, nextState) =&gt; {
- *                       console.log(&apos;routeShouldMatch&apos;);
  *                       if (!nextState.routeData.applied) {
  *                           // blocks route changing
  *                           return false;
@@ -302,6 +301,7 @@ class Router extends Route {
     routerDidEnter,
     routerDidExit,
     routeShouldMatch,
+    routeWillEnter = null,
     homeRoute = null
   }) {
     super({ path, modal, build, routes, to, isRoot, routeShouldMatch });
@@ -309,7 +309,8 @@ class Router extends Route {
     this._historyUnlisten = () =&gt; null;
     this._handlers = {
       routerDidEnter,
-      routerDidExit
+      routerDidExit,
+      routeWillEnter
     };
 
     if (isRoot) {
@@ -422,10 +423,24 @@ class Router extends Route {
   }
 
   /**
+   * it tests that Whether router can go back as n
+   * @example
+   * ...
+   * router.canGoBack(-3) ? router.goBackto(-3) : // if not, do anything else
+   *
+   * @since 1.1.0
+   * @param {number} n Amount of back as negative value
+   * return {boolean}
+   */
+  canGoBack(n) {
+    return this._historyController.canGoBack(n);
+  }
+
+  /**
    * Adds eventlisteners to listen history changes
    * @example
    * const unlisten = router.listen((location, action) =&gt; {
-   *     console.log(`new route location: ${location.pathname} action : ${action}`);
+   *     console.log(`new route location: ${location.url} action : ${action}`);
    * });
    *
    * @since 1.0.0
@@ -494,7 +509,7 @@ class Router extends Route {
       this._matches = matchRoutes(
         this.getStore(),
         [this].concat(this._routes),
-        location.pathname
+        location.url
       );
       this.renderMatches(this._matches, location, action, target, fromRouter);
     }
@@ -525,7 +540,6 @@ class Router extends Route {
    */
   renderMatches(matches, location, action, target, fromRouter) {
     this._fromRouter = fromRouter;
-
     const routeData = location.state;
 
     matches.some(({ match, route }, index) =&gt; {
@@ -544,7 +558,7 @@ class Router extends Route {
           // handleRouteUrl(this, url, routeData, action);
         }); // add new router display logic from root to children
 
-        route.setUrl(location.pathname);
+        route.setUrl(location.url);
 
         // move routes to child router
         route.renderMatches(
@@ -585,7 +599,7 @@ class Router extends Route {
           routeData,
           routingState
         });
-        route.setUrl(location.pathname);
+        route.setUrl(location.url);
 
         // If route owned by current child router which is different from target router
         // then push or pop route to child router&apos;s history.
@@ -606,11 +620,11 @@ class Router extends Route {
 
         _lastRoute &amp;&amp; _lastRoute.routeDidExit(this);
         this.routeDidMatch(route); // fires routeDidMatch
-        if (this._fromRouter) {
+        if (this._fromRouter &amp;&amp; action !== &quot;POP&quot;) {
           const view = this.renderRoute(route); // build route&apos;s view
           route.setState({ view }); // keep view in the route&apos;s state
         }
-        tasks.reverse().forEach(task =&gt; task(location.pathname, action)); // trigger all routers&apos; routeWillEnter in the tasks queue
+        tasks.reverse().forEach(task =&gt; task(location.url, action)); // trigger all routers&apos; routeWillEnter in the tasks queue
         this.routerDidEnter &amp;&amp; this.routerDidEnter(route); // fires routerDidEnter
         route.routeDidEnter(this); // fires routeDidEnter
         _lastRoute = route; // save exact matched route as last route
@@ -629,14 +643,22 @@ class Router extends Route {
   }
 
   /**
-   * Handles a new route activated in the router
+   * Handles a new route which is activated in the router
    *
    * @since 1.0.0
    * @event
    * @protected
    * @param {Route} route
+   * @param {string} action
    */
-  routerWillEnter(route) {}
+  routeWillEnter(route, action) {
+    const viewConroller =
+      (route._renderer &amp;&amp; route._renderer._rootController) ||
+      // else just instance of Route
+      route.getState().view;
+    this._handlers.routeWillEnter &amp;&amp;
+      this._handlers.routeWillEnter(this, route, viewConroller);
+  }
 
   /**
    * @since 1.0.0
@@ -650,7 +672,7 @@ class Router extends Route {
   }
 
   /**
-   * Life-cycle event handler handles when Router is activated
+   * Life-cycle handler emits when Router is activated
    * @example
    * ....
    * Router.of({
@@ -684,7 +706,7 @@ class Router extends Route {
   }
 
   /**
-   * Handles router is deactivated.
+   * Emits when the router is deactivated.
    *
    * @since 1.0.0
    * @example
@@ -704,7 +726,7 @@ class Router extends Route {
   }
 
   /**
-   * Redirects route and removes last route record from history.
+   * Redirects route and removes last route&apos;s record from the history.
    *
    * @protected
    * @param {Route} route
@@ -728,7 +750,7 @@ class Router extends Route {
   }
 
   /**
-   * Route is matched handler.
+   * Route matched to requested url
    *
    * @since 1.0.0
    * @protected
@@ -773,14 +795,15 @@ class Router extends Route {
   }
 
   /**
-   * Change history by specified path
+   * Pushes new history entry with specified path
    *
    * @since 1.0.0
    * @param {object|string} path - Path or matches of the route
    * @param {!object} [routeData={}] routeData - Routing data
+   * @param {!boolean} [animated={}] routeData - Routing data
    * @return {Router}
    */
-  push(path, routeData = {}) {
+  push(path, routeData = {}, animated = true) {
     if (path === this._state.url) {
       Object.assign(this._historyController.history.location.state, {
         routeData
@@ -813,6 +836,7 @@ class Router extends Route {
     } catch (e) {
       throw e;
     }
+
     this._historyController.push(path, routeData);
     this._fromRouter = false;
     return this;
@@ -827,6 +851,7 @@ class Router extends Route {
   /**
    * Replaces specified path&apos;s state
    *
+   * @experimental
    * @since 1.0.0
    * @ignore
    * @param {string} path
@@ -840,7 +865,7 @@ class Router extends Route {
    * Rewinds the history
    *
    * @since 1.0.0
-   * @param {string | RouteLocation} url This routes an experimental feature. If you use this feature you should use for same StackRouter stack.
+   * @param {string | RouteLocation} url This is an experimental feature. If you use this feature you should use for same StackRouter stack.
    * @return {Router}
    */
   goBack(url) {
@@ -850,7 +875,7 @@ class Router extends Route {
       url
         ? this.dispatch(
             typeof url === &quot;string&quot;
-              ? { pathname: url, hash: &quot;&quot;, search: &quot;&quot;, state: {} }
+              ? { url, hash: &quot;&quot;, search: &quot;&quot;, state: {} }
               : url,
             &quot;POP&quot;,
             this,

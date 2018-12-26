@@ -97,13 +97,14 @@ class AndroidRenderer extends Renderer {
    * @override
    */
   pushChild(page, animated = true) {
-    console.log(&quot;pageID : &quot; + page.pageID);
     // To avoid Android error
-    if (this._rootController.childControllers.some(p =&gt; p === page)) {
+    if (this._rootController.childControllers.length !== 0 &amp;&amp; this._rootController.childControllers.some(p =&gt; p === page)) {
       return;
     }
+    animated = this._rootController.childControllers.length === 0 ? false : animated;
     this._rootController.push &amp;&amp;
       this._rootController.push({ controller: page, animated: animated });
+    this._activePage = page;
   }
 
   /**
@@ -130,7 +131,10 @@ class AndroidRenderer extends Renderer {
    * @override
    */
   show(page) {
+    if(this._activePage == page)
+      return;
     Application.setRootController(page);
+    this._activePage = page;
   }
 }
 

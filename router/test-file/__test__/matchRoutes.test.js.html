@@ -102,7 +102,7 @@ describe(&quot;Match Routes&quot;, () =&gt; {
       const res = parseUrl(&quot;/path/to/1?type=any&amp;sort=ASC&amp;parent=111&quot;);
       expect(res).toEqual({
         hash: &quot;&quot;,
-        pathname: &quot;/path/to/1&quot;,
+        url: &quot;/path/to/1&quot;,
         query: { parent: &quot;111&quot;, sort: &quot;ASC&quot;, type: &quot;any&quot; },
         rawQuery: &quot;?type=any&amp;sort=ASC&amp;parent=111&quot;
       });

@@ -109,7 +109,7 @@ describe(&quot;HistoryController&quot;, () =&gt; {
 
     history.push(&quot;/path&quot;);
 
-    expect(_location.pathname).toBe(&quot;/path&quot;);
+    expect(_location.url).toBe(&quot;/path&quot;);
   });
 
   it(&quot;cannot be affected when children&apos;s state is chenged&quot;, () =&gt; {
@@ -120,12 +120,12 @@ describe(&quot;HistoryController&quot;, () =&gt; {
     [node, node2, node3].forEach(listen);
     var res = [];
     var rootUnlisten = history.listen((location, action) =&gt; {
-      res.push(location.pathname);
+      res.push(location.url);
     });
 
     function listen(node) {
       node.listen((location, action) =&gt; {
-        res.push(location.pathname);
+        res.push(location.url);
       });
     }
 
@@ -147,7 +147,7 @@ describe(&quot;HistoryController&quot;, () =&gt; {
 
   //   function listen(node) {
   //     node.listen((location, action) =&gt; {
-  //       res.push(location.pathname);
+  //       res.push(location.url);
   //     });
   //   }
 
@@ -196,12 +196,12 @@ describe(&quot;HistoryController&quot;, () =&gt; {
 
   //   grandNode.push(&quot;/path&quot;);
   //   grandNode.push(&quot;/path2&quot;);
-  //   expect(_nodeLocation.pathname).toBe(&quot;/path2&quot;);
-  //   expect(_location.pathname).toBe(&quot;/path2&quot;);
+  //   expect(_nodeLocation.url).toBe(&quot;/path2&quot;);
+  //   expect(_location.url).toBe(&quot;/path2&quot;);
   //   nodeUnlisten();
   //   grandNode.goBack();
-  //   expect(_nodeLocation.pathname).toBe(&quot;/path2&quot;);
-  //   expect(_location.pathname).toBe(&quot;/path&quot;);
+  //   expect(_nodeLocation.url).toBe(&quot;/path2&quot;);
+  //   expect(_location.url).toBe(&quot;/path&quot;);
   // });
 
   it(&quot;can go back&quot;, () =&gt; {
@@ -219,9 +219,9 @@ describe(&quot;HistoryController&quot;, () =&gt; {
 
     node.push(&quot;/path&quot;);
     node.push(&quot;/path2&quot;);
-    expect(_nodeLocation.pathname).toBe(&quot;/path2&quot;);
+    expect(_nodeLocation.url).toBe(&quot;/path2&quot;);
     node.goBack();
-    expect(_nodeLocation.pathname).toBe(&quot;/path&quot;);
+    expect(_nodeLocation.url).toBe(&quot;/path&quot;);
   });
 
   it(&quot;can&apos;t go back if history is empty&quot;, () =&gt; {
@@ -264,11 +264,11 @@ describe(&quot;HistoryController&quot;, () =&gt; {
     history.push(&quot;/path/to&quot;);
     history.push(&quot;/path/to/2&quot;);
     node.push(&quot;/path/too&quot;);
-    expect(_nodeLocation.pathname).toBe(&quot;/path/too&quot;);
-    expect(_location.pathname).toBe(&quot;/path/to/2&quot;);
+    expect(_nodeLocation.url).toBe(&quot;/path/too&quot;);
+    expect(_location.url).toBe(&quot;/path/to/2&quot;);
     node.goBack();
-    expect(_location.pathname).toBe(&quot;/path/to&quot;);
-    expect(_nodeLocation.pathname).toBe(&quot;/path/too&quot;);
+    expect(_location.url).toBe(&quot;/path/to&quot;);
+    expect(_nodeLocation.url).toBe(&quot;/path/too&quot;);
   });
   it(&quot;can dispose&quot;, () =&gt; {
     var history = createHistory();
